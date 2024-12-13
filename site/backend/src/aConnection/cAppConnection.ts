@@ -37,7 +37,7 @@ const appConnection = express();
 appConnection.use(morganMiddleware("dev"));
 appConnection.use(corsMiddleware({ origin: process.env.ENVIRONMENT === "Production" ?
   [
-    "https://kisna-001.netlify.app",
+    "https://inventech-001.netlify.app",
   ] : 
   [
     "http://localhost:5173",
