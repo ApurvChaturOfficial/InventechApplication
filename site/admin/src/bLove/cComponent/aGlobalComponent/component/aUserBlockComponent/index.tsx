@@ -14,10 +14,10 @@ const UserBlockComponent = ({ user }: any) => {
         <div className="flex items-center space-x-2">
           <Avatar>
             <AvatarImage src={"asdsadsad"} />
-            <AvatarFallback>{getInitials(user ? `${user.eFirstname}` : "Inventech", user ? `${user.eLastname}` : "Inventech"  )}</AvatarFallback>
+            <AvatarFallback>{getInitials(user ? `${user.eFirstname}` : "InvenTech", user ? `${user.eLastname}` : "InvenTech"  )}</AvatarFallback>
           </Avatar>
           <div className='hidden sm:block' >
-            <p className="text-sm font-medium leading-none">{user ? `${user.eFirstname} ${user.eLastname}` : `Inventech`}</p>
+            <p className="text-sm font-medium leading-none">{user ? `${user.eFirstname} ${user.eLastname}` : `InvenTech`}</p>
             {/* <p className="text-sm text-muted-foreground">{user ? `${user.eEmail}` : `someone@inventech.com`}</p> */}
           </div>
         </div>

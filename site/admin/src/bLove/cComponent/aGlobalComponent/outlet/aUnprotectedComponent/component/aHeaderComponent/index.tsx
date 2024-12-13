@@ -6,14 +6,21 @@ import { Link, useNavigate } from "react-router-dom"
 
 import getInitialsUtility from "@/bLove/dUtility/aGetInitialsUtility"
 import fullRoute from "@/bLove/gRoute/bFullRoute"
-// import KisnaLogo from "@/bLove/hAsset/KisnaLogo.jpg";
-import userAPIEndpoint from "@/bLove/aAPI/aGlobalAPI/bUserAdministration/aUserAPIEndpoints"
+import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.jpg";
+import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints"
 import apiResponseHandler from "./extras/aAPIResponseHandler"
 
 import {
+  BookmarkX,
+  FolderKey,
+  KeyRound,
+  LogIn,
+  LogOut,
   Menu,
-  Package2,
+  Rat,
   User2,
+  UserPen,
+  UserPlus,
 } from "lucide-react"
 import { Button } from "@/aConnection/bShadcnConnection/components/ui/button"
 import {
@@ -24,8 +31,10 @@ import {
 } from "@/aConnection/bShadcnConnection/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/aConnection/bShadcnConnection/components/ui/sheet"
 import { ModeToggle } from "@/aConnection/bShadcnConnection/components/mode-toggle"
-// import { cn } from "@/aConnection/bShadcnConnection/lib/utils"
+import { cn } from "@/aConnection/bShadcnConnection/lib/utils"
 import { Avatar, AvatarFallback, AvatarImage } from "@/aConnection/bShadcnConnection/components/ui/avatar"
+import brandConnection from "@/aConnection/eBrandConnection"
+import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu"
 
 
 const HeaderComponent = () => {
@@ -50,16 +59,36 @@ const HeaderComponent = () => {
     <React.Fragment>
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+          {/* Important Comment */}
           {/* <img
-            src={KisnaLogo}
-            alt={"KisnaLogo"}
+            src={BrandLogo}
+            alt={"BrandLogo"}
             className={cn(
               "h-auto object-fit transition-all hover:scale-105 w-[35px]",
               "aspect-square"
             )}
             onClick={() => navigate(fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute)}
           /> */}
-          <Link
+          <img
+            src={BrandLogo}
+            alt={"BrandLogo"}
+            className={cn(
+              "h-[40px] object-fit transition-all hover:scale-105 w-auto hidden dark:block",
+              "portrait"
+            )}
+            onClick={() => navigate(fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute)}
+          />
+          <img
+            src={BrandLogo}
+            alt={"BrandLogo"}
+            className={cn(
+              "h-[40px] object-fit transition-all hover:scale-105 w-auto block dark:hidden",
+              "portrait"
+            )}
+            onClick={() => navigate(fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute)}
+          />
+          {/* Important Comment */}
+          {/* <Link
             to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aDashboardRoute}
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
@@ -70,7 +99,7 @@ const HeaderComponent = () => {
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
             Products
-          </Link>
+          </Link> */}
         </nav>
         <Sheet>
           <SheetTrigger asChild>
@@ -89,11 +118,28 @@ const HeaderComponent = () => {
                 to={fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute}
                 className="flex items-center gap-2 text-lg font-semibold"
               >
-                <Package2 className="h-6 w-6" />
-                <span className="sr-only">PegaSYS - Admin</span>
+                <img
+                  src={BrandLogo}
+                  alt={"BrandLogo"}
+                  className={cn(
+                    "h-[40px] object-fit transition-all hover:scale-105 w-auto hidden dark:block",
+                    "portrait"
+                  )}
+                  onClick={() => navigate(fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute)}
+                />
+                <img
+                  src={BrandLogo}
+                  alt={"BrandLogo"}
+                  className={cn(
+                    "h-[40px] object-fit transition-all hover:scale-105 w-auto block dark:hidden",
+                    "portrait"
+                  )}
+                  onClick={() => navigate(fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute)}
+                />
+                <span className="sr-only">{brandConnection.brandName} - Admin</span>
               </Link>
               <Link 
-                to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aDashboardRoute} 
+                to={"fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute."} 
                 className="hover:text-foreground"
               >
                 Dashboard
@@ -126,6 +172,7 @@ const HeaderComponent = () => {
           </SheetContent>
         </Sheet>
         <div className="flex w-full items-center gap-2 md:ml-auto md:gap-2 lg:gap-2">
+          {/* Important Comment */}
           {/* <form className="ml-auto flex-1 sm:flex-initial">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -143,23 +190,32 @@ const HeaderComponent = () => {
               <DropdownMenuTrigger asChild>
                 {
                   (ReduxCall.state.receivedObject as any)?.ProfileRetrieve?._id ? (
-                    <Link to={fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute} >
-                      <div className="flex items-center space-x-2">
-                        <Avatar>
-                          <AvatarImage src={"asdsadsad"} />
-                          <AvatarFallback>{getInitialsUtility("Apurv", "Chatur")}</AvatarFallback>
-                        </Avatar>
-                        <div className='hidden sm:block' >
-                          <p className="text-sm font-medium leading-none">{"Apurv Chatur"}</p>
-                          <p className="text-sm text-muted-foreground">{"apurvchaturofficial@gmail.com"}</p>
+                    <div className="flex items-center space-x-2">
+                      <Avatar>
+                        <AvatarImage src={"asdsadsad"} />
+                        <AvatarFallback>{getInitialsUtility(
+                          (ReduxCall.state.receivedObject as any)?.ProfileRetrieve?.eFirstname, 
+                          (ReduxCall.state.receivedObject as any)?.ProfileRetrieve?.eLastname
+                        )}</AvatarFallback>
+                      </Avatar>
+                      <div className='hidden sm:block' >
+                        <div className="flex items-center flex-1 gap-1">
+                          <p className="text-sm font-medium leading-none">{`
+                            ${(ReduxCall.state.receivedObject as any)?.ProfileRetrieve?.eFirstname} 
+                            ${(ReduxCall.state.receivedObject as any)?.ProfileRetrieve?.eLastname}
+                          `}</p>
+                          <p className="text-xs font-medium text-muted-foreground">
+                            ({(ReduxCall.state.receivedObject as any)?.ProfileRetrieve?.cRole?.aTitle})
+                          </p>
                         </div>
+                        <p className="text-xs text-muted-foreground">{(ReduxCall.state.receivedObject as any)?.ProfileRetrieve?.eEmail}</p>
                       </div>
-                    </Link>
+                    </div>
                   ) : (
-                  <Button variant="secondary" size="icon" className="rounded-full">
-                    <User2 className="h-5 w-5" />
-                    <span className="sr-only">Toggle user menu</span>
-                  </Button>
+                    <Button variant="secondary" size="icon" className="rounded-full">
+                      <User2 className="h-5 w-5" />
+                      <span className="sr-only">Toggle user menu</span>
+                    </Button>
                   )
                 }
               </DropdownMenuTrigger>
@@ -167,49 +223,53 @@ const HeaderComponent = () => {
                 {
                   (ReduxCall.state.receivedObject as any)?.ProfileRetrieve?._id ? (
                     <React.Fragment>
-                      <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.aProfileRetrieveRoute} >
-                        <DropdownMenuItem>
-                          View Profile
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem asChild >
+                          <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.aProfileRetrieveRoute} >
+                            <Rat /> View Profile
+                          </Link>
                         </DropdownMenuItem>
-                      </Link>
-                      <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.bProfileUpdateRoute} >
-                        <DropdownMenuItem>
-                          Edit Profile
+                        <DropdownMenuItem asChild >
+                          <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.bProfileUpdateRoute} >
+                            <UserPen /> Edit Profile
+                          </Link>
                         </DropdownMenuItem>
-                      </Link>
-                      <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.cProfilePasswordUpdateRoute} >
-                        <DropdownMenuItem>
-                          Change Password
+                        <DropdownMenuItem asChild >
+                          <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.cProfilePasswordUpdateRoute} >
+                            <FolderKey /> Change Password
+                          </Link>
                         </DropdownMenuItem>
-                      </Link>
-                      <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.dProfileDeleteRoute} >
-                        <DropdownMenuItem>
-                          Delete Profile
+                        <DropdownMenuItem asChild >
+                          <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.dProfileDeleteRoute} >
+                            <BookmarkX /> Delete Profile
+                          </Link>
                         </DropdownMenuItem>
-                      </Link>
-                      <DropdownMenuItem asChild >
-                        <div onClick={() => apiResponseHandler.logoutAPIResponseHandler(APICall.logoutAPITrigger, navigate, ReduxCall)} >
-                          Sign Out
-                        </div>
-                      </DropdownMenuItem>
+                        <DropdownMenuItem asChild >
+                          <span onClick={() => apiResponseHandler.logoutAPIResponseHandler(APICall.logoutAPITrigger, navigate, ReduxCall)} >
+                            <LogOut /> Sign Out
+                          </span>
+                        </DropdownMenuItem>
+                      </DropdownMenuGroup>
                     </React.Fragment>
                   ) : (
                     <React.Fragment>
-                      <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.aSignInRoute} >
-                        <DropdownMenuItem>
-                          Sign In
+                      <DropdownMenuGroup>
+                        <DropdownMenuItem asChild >
+                          <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.aSignInRoute} >
+                            <LogIn /> Sign In
+                          </Link>
                         </DropdownMenuItem>
-                      </Link>
-                      <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.bSignUpRoute} >
-                        <DropdownMenuItem>
-                          Sign Up
+                        <DropdownMenuItem asChild >
+                          <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.bSignUpRoute} >
+                            <UserPlus /> Sign Up
+                          </Link>
                         </DropdownMenuItem>
-                      </Link>
-                      <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.cForgotPasswordRoute} >
-                        <DropdownMenuItem>
-                          Forgot Password
+                        <DropdownMenuItem asChild >
+                          <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.cForgotPasswordRoute} >
+                          <KeyRound /> Forgot Password
+                          </Link>
                         </DropdownMenuItem>
-                      </Link>
+                      </DropdownMenuGroup>
                     </React.Fragment>
                   )
                 }

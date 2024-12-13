@@ -4,6 +4,24 @@ import { Helmet } from 'react-helmet-async';
 
 import endpointRoute from '@/bLove/gRoute/aEndpointRoute';
 import { Toaster } from '@/aConnection/bShadcnConnection/components/ui/toaster';
+import isAllowedUtility, { menuListUtility, NoAccessMessageUtility } from '@/bLove/dUtility/dIsAllowedUtility';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../dReduxConnection';
+import globalSlice from '@/bLove/bRedux/aGlobalSlice';
+
+import ImageUploadListComponent from '@/bLove/cComponent/zOpenFreestyleComponent/aImageUploadComponent/aListComponent';
+import ImageUploadCreateComponent from '@/bLove/cComponent/zOpenFreestyleComponent/aImageUploadComponent/bCreateComponent';
+import ImageUploadUpdateComponent from '@/bLove/cComponent/zOpenFreestyleComponent/aImageUploadComponent/dUpdateComponent';
+import ImageUploadDeleteComponent from '@/bLove/cComponent/zOpenFreestyleComponent/aImageUploadComponent/eDeleteComponent';
+import ImageUploadRetrieveComponent from '@/bLove/cComponent/zOpenFreestyleComponent/aImageUploadComponent/cRetrieveComponent';
+import ExportComponent from '@/bLove/cComponent/zOpenFreestyleComponent/bExportComponent';
+import ImportComponent from '@/bLove/cComponent/zOpenFreestyleComponent/cImportComponent';
+import SampleListComponent from '@/bLove/cComponent/zOpenFreestyleComponent/cSampleListComponent';
+import SampleCreateComponent from '@/bLove/cComponent/zOpenFreestyleComponent/dSampleCreateComponent';
+import SampleRetrieveComponent from '@/bLove/cComponent/zOpenFreestyleComponent/eSampleRetrieveComponent';
+import SampleProductCreateComponent from '@/bLove/cComponent/zOpenFreestyleComponent/fSampleProductCreateComponent';
+import GenerateVariantsComponent from '@/bLove/cComponent/zOpenFreestyleComponent/fSampleProductVariantCreateComponent';
+import DashboardComponent from '@/bLove/cComponent/zOpenFreestyleComponent/aDashboardComponent';
 
 // Layout
 const GlobalLayout = React.lazy(() => import('@/bLove/eLayout/aGlobalLayout'));
@@ -27,11 +45,7 @@ const ProfileUpdatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/out
 const ProfilePasswordUpdatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/aTopbarPage/page/cProfilePasswordUpdatePage'));
 const ProfileDeletePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/aTopbarPage/page/dProfileDeletePage'));
 
-const DashboardPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cComponentStorage/aDashboardPage'));
-const DataListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cComponentStorage/bDataListPage'));
-const DataFormPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cComponentStorage/cDataFormPage'));
-const DataFormTwoPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cComponentStorage/dDataFormTwoPage'));
-const DataCardPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cComponentStorage/eDataCardPage'));
+const InvenTechDashboardPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/zDashboardPage'));
 
 const BaseManyToOneListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/aBaseSetupPage/aBaseManyToOnePage/aListPage'));
 const BaseManyToOneCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/aBaseSetupPage/aBaseManyToOnePage/bCreatePage'));
@@ -81,8 +95,40 @@ const MenuRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outl
 const MenuUpdatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/bUserAdministrationPage/cMenuPage/dUpdatePage'));
 const MenuDeletePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/bUserAdministrationPage/cMenuPage/eDeletePage'));
 
+// InvenTech
+const ProductCatalogueListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/aProductCataloguePage/aListPage'));
+const ProductCatalogueCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/aProductCataloguePage/bCreatePage'));
+const ProductCatalogueRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/aProductCataloguePage/cRetrievePage'));
+
+const WarehouseManagementListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/bWarehouseManagementPage/aListPage'));
+const WarehouseManagementCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/bWarehouseManagementPage/bCreatePage'));
+const WarehouseManagementRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/bWarehouseManagementPage/cRetrievePage'));
+
+const StoreManagementListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/cStoreManagementPage/aListPage'));
+const StoreManagementCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/cStoreManagementPage/bCreatePage'));
+const StoreManagementRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/cStoreManagementPage/cRetrievePage'));
+
+const ActivityLogListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/dActivityLogPage/aListPage'));
+
+const LocationListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/eLocationPage/aListPage'));
+
+const DepartmentListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/fDepartmentPage/aListPage'));
+const DepartmentCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/fDepartmentPage/bCreatePage'));
+const DepartmentRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/fDepartmentPage/cRetrievePage'));
+
+const OpenPurchaseOrderListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/gOpenPurchaseOrderPage/aListPage'));
+const OpenPurchaseOrderCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/gOpenPurchaseOrderPage/bCreatePage'));
+const OpenPurchaseOrderRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/gOpenPurchaseOrderPage/cRetrievePage'));
+
 
 const AppConnection = () => {
+  // Redux Call
+  const ReduxCall = {
+    state: useSelector((fullState: RootState) => fullState.globalSlice),
+    dispatch: useDispatch(),
+    action: globalSlice.actions
+  }
+  
   // JSX
   return (
     <React.Fragment>
@@ -125,66 +171,105 @@ const AppConnection = () => {
 
                 {/* Sidebar */}
                 <Route element={<SidebarLayout />} >
-                  {/* Components */}
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aDashboardRoute}`} element={<DashboardPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bDataListRoute}`} element={<DataListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cDataFormRoute}`} element={<DataFormPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.dDataFormTwoRoute}`} element={<DataFormTwoPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.eDataCardRoute}`} element={<DataCardPage />} />
-
                   {/* Pages */}
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.aListRoute}`} element={<BaseManyToOneListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.bCreateRoute}`} element={<BaseManyToOneCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.cRetrieveRoute}/:id`} element={<BaseManyToOneRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.dUpdateRoute}/:id`} element={<BaseManyToOneUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.eDeleteRoute}/:id`} element={<BaseManyToOneDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.zDashboardRoute.aDashboardRoute}`} element={<InvenTechDashboardPage />} />
+
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToOne, "list") ? <BaseManyToOneListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToOne, "create") ? <BaseManyToOneCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToOne, "retrieve") ? <BaseManyToOneRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToOne, "update") ? <BaseManyToOneUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToOne, "delete") ? <BaseManyToOneDeletePage /> : <NoAccessMessageUtility />} />
                   
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.aListRoute}`} element={<BaseManyToManyListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.bCreateRoute}`} element={<BaseManyToManyCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.cRetrieveRoute}/:id`} element={<BaseManyToManyRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.dUpdateRoute}/:id`} element={<BaseManyToManyUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.eDeleteRoute}/:id`} element={<BaseManyToManyDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToMany, "list") ? <BaseManyToManyListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToMany, "create") ? <BaseManyToManyCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToMany, "retrieve") ? <BaseManyToManyRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToMany, "update") ? <BaseManyToManyUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseManyToMany, "delete") ? <BaseManyToManyDeletePage /> : <NoAccessMessageUtility />} />
                   
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute}`} element={<BaseListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.bCreateRoute}`} element={<BaseCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.cRetrieveRoute}/:id`} element={<BaseRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.dUpdateRoute}/:id`} element={<BaseUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.eDeleteRoute}/:id`} element={<BaseDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.base, "list") ? <BaseListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.base, "create") ? <BaseCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.base, "retrieve") ? <BaseRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.base, "update") ? <BaseUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.base, "delete") ? <BaseDeletePage /> : <NoAccessMessageUtility />} />
                   
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.aListRoute}`} element={<BaseOneToOneListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.bCreateRoute}`} element={<BaseOneToOneCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.cRetrieveRoute}/:id`} element={<BaseOneToOneRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.dUpdateRoute}/:id`} element={<BaseOneToOneUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.eDeleteRoute}/:id`} element={<BaseOneToOneDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToOne, "list") ? <BaseOneToOneListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToOne, "create") ? <BaseOneToOneCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToOne, "retrieve") ? <BaseOneToOneRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToOne, "update") ? <BaseOneToOneUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToOne, "delete") ? <BaseOneToOneDeletePage /> : <NoAccessMessageUtility />} />
                   
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.aListRoute}`} element={<BaseOneToManyListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.bCreateRoute}`} element={<BaseOneToManyCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.cRetrieveRoute}/:id`} element={<BaseOneToManyRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.dUpdateRoute}/:id`} element={<BaseOneToManyUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.eDeleteRoute}/:id`} element={<BaseOneToManyDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToMany, "list") ? <BaseOneToManyListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToMany, "create") ? <BaseOneToManyCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToMany, "retrieve") ? <BaseOneToManyRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToMany, "update") ? <BaseOneToManyUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.baseOneToMany, "delete") ? <BaseOneToManyDeletePage /> : <NoAccessMessageUtility />} />
                   
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.aUserRoute.aListRoute}`} element={<UserListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.aUserRoute.bCreateRoute}`} element={<UserCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.aUserRoute.cRetrieveRoute}/:id`} element={<UserRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.aUserRoute.dUpdateRoute}/:id`} element={<UserUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.aUserRoute.eDeleteRoute}/:id`} element={<UserDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.user, "list") ? <UserListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.user, "create") ? <UserCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.user, "retrieve") ? <UserRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.user, "update") ? <UserUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.user, "delete") ? <UserDeletePage /> : <NoAccessMessageUtility />} />
                   
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.bRoleRoute.aListRoute}`} element={<RoleListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.bRoleRoute.bCreateRoute}`} element={<RoleCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.bRoleRoute.cRetrieveRoute}/:id`} element={<RoleRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.bRoleRoute.dUpdateRoute}/:id`} element={<RoleUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.bRoleRoute.eDeleteRoute}/:id`} element={<RoleDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.role, "list") ? <RoleListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.role, "create") ? <RoleCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.role, "retrieve") ? <RoleRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.role, "update") ? <RoleUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.role, "delete") ? <RoleDeletePage /> : <NoAccessMessageUtility />} />
                   
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.cMenuRoute.aListRoute}`} element={<MenuListPage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.cMenuRoute.bCreateRoute}`} element={<MenuCreatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.cMenuRoute.cRetrieveRoute}/:id`} element={<MenuRetrievePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.cMenuRoute.dUpdateRoute}/:id`} element={<MenuUpdatePage />} />
-                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.cMenuRoute.eDeleteRoute}/:id`} element={<MenuDeletePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.aListRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.menu, "list") ? <MenuListPage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.bCreateRoute}`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.menu, "create") ? <MenuCreatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.cRetrieveRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.menu, "retrieve") ? <MenuRetrievePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.dUpdateRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.menu, "update") ? <MenuUpdatePage /> : <NoAccessMessageUtility />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.eDeleteRoute}/:id`} element={(ReduxCall.state.receivedObject as any)?.ProfileRetrieve && isAllowedUtility(ReduxCall, menuListUtility.menu, "delete") ? <MenuDeletePage /> : <NoAccessMessageUtility />} />
+                  
+                  {/* InvenTech */}
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.aListRoute}`} element={<ProductCatalogueListPage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.bCreateRoute}`} element={<ProductCatalogueCreatePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.cRetrieveRoute}/:id`} element={<ProductCatalogueRetrievePage />} />
+                  
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.aListRoute}`} element={<WarehouseManagementListPage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.bCreateRoute}`} element={<WarehouseManagementCreatePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.cRetrieveRoute}/:id`} element={<WarehouseManagementRetrievePage />} />
+                  
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.aListRoute}`} element={<StoreManagementListPage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.bCreateRoute}`} element={<StoreManagementCreatePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.cRetrieveRoute}/:id`} element={<StoreManagementRetrievePage />} />
+                  
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.dActivityLogRoute.aListRoute}`} element={<ActivityLogListPage />} />
+                  
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.eLocationRoute.aListRoute}`} element={<LocationListPage />} />
+                  
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.fDepartmentRoute.aListRoute}`} element={<DepartmentListPage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.fDepartmentRoute.bCreateRoute}`} element={<DepartmentCreatePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.fDepartmentRoute.cRetrieveRoute}/:id`} element={<DepartmentRetrievePage />} />
+                  
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.aListRoute}`} element={<OpenPurchaseOrderListPage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.bCreateRoute}`} element={<OpenPurchaseOrderCreatePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.cRetrieveRoute}/:id`} element={<OpenPurchaseOrderRetrievePage />} />
                   
                 </Route>
               </Route>
             </Route>
           </Route>
+
+          {/* Component */}
+          <Route path={`image-upload-list`} element={<ImageUploadListComponent />} />
+          <Route path={`image-upload-create`} element={<ImageUploadCreateComponent />} />
+          <Route path={`image-upload-retrieve`} element={<ImageUploadRetrieveComponent />} />
+          <Route path={`image-upload-update`} element={<ImageUploadUpdateComponent />} />
+          <Route path={`image-upload-delete`} element={<ImageUploadDeleteComponent />} />
+
+          <Route path={`export`} element={<ExportComponent />} />
+          <Route path={`import`} element={<ImportComponent />} />
+          
+          <Route path={`sample-list`} element={<SampleListComponent />} />
+          <Route path={`sample-create`} element={<SampleCreateComponent />} />
+          <Route path={`sample-retrieve`} element={<SampleRetrieveComponent />} />
+
+          <Route path={`sample-product-create`} element={<SampleProductCreateComponent />} />
+          <Route path={`sample-product-variant-create`} element={<GenerateVariantsComponent />} />
+
+          <Route path={`dashboard-one`} element={<DashboardComponent />} />
 
           {/* 404 Page */}
            <Route path="*" element={<h1>404 - Not Found</h1>} />

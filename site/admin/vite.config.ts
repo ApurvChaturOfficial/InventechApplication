@@ -8,9 +8,9 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
   registerType: "prompt",
   includeAssets: ["favicon.ico", "apple-touch-icon.png", "masked-icon.svg"],
   manifest: {
-    name: "Inventech",
-    short_name: "Inventech",
-    description: "This a description for this app",
+    name: "InvenTech",
+    short_name: "InvenTech",
+    description: "Diamond & Gold Jewellery",
     icons: [
       {
         src: "/android-chrome-192x192.png",
@@ -35,8 +35,8 @@ const manifestForPlugin: Partial<VitePWAOptions> = {
       //   purpose: "any maskable",
       // },
     ],
-    theme_color: "#171717",
-    background_color: "#e8ebf2",
+    theme_color: "#262761",
+    background_color: "#262761",
     display: "standalone",
     scope: "/",
     start_url: "/",

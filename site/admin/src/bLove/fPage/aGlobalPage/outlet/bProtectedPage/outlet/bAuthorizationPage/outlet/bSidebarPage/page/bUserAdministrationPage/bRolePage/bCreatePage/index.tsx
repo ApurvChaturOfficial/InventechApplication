@@ -1,7 +1,7 @@
 import React from "react"
 import { useDispatch, useSelector } from "react-redux";
 
-import roleAPIEndpoint from "@/bLove/aAPI/aGlobalAPI/bUserAdministration/bRoleAPIEndpoints";
+import roleAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/bRoleAPIEndpoints";
 import { RootState } from "@/aConnection/dReduxConnection";
 import globalSlice from "@/bLove/bRedux/aGlobalSlice";
 import apiServerResponseHandler from "./extras/aAPIResponseHandler";
@@ -9,7 +9,7 @@ import apiServerResponseHandler from "./extras/aAPIResponseHandler";
 import RoleCreateComponent from "@/bLove/cComponent/aGlobalComponent/outlet/bProtectedComponent/outlet/bAuthorizationComponent/outlet/bSidebarComponent/children/bUserAdministrationComponent/bRoleComponent/bCreateComponent";
 import data from "./extras/bData";
 import { formSchema } from "./extras/cType";
-import menuAPIEndpoint from "@/bLove/aAPI/aGlobalAPI/bUserAdministration/cMenuAPIEndpoints";
+import menuAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/cMenuAPIEndpoints";
 
 
 const RoleCreatePage = () => {
@@ -38,6 +38,7 @@ const RoleCreatePage = () => {
         APICall={{
           createAPITrigger: APICall.createAPITrigger,
           createAPIResponse: APICall.createAPIResponse,
+          specialListAPIResponse: APICall.menuListAPIResponse
         }}
         extras={{
           apiResponseHandler: {
@@ -54,7 +55,19 @@ const RoleCreatePage = () => {
             aSlug: "",
 
             cMenu: [],
-          }
+          },
+          specialPreviousValue: (form: any) => (
+            form.setValue("cMenu", APICall.menuListAPIResponse.data.list?.map((menuOption: any) => ({
+              menu: menuOption._id,
+              access: {
+                list: false,
+                create: false,
+                retrieve: false,
+                update: false,
+                delete: false,
+              },
+            })))
+          )
         }}        
       />
     </React.Fragment>

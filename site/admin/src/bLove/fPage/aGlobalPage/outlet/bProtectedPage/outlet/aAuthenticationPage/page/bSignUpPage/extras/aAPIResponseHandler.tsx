@@ -15,6 +15,11 @@ const apiResponseHandler = {
         eMobile: data.eMobile,
         ePassword: data.ePassword,
         eConfirmPassword: data.eConfirmPassword,
+
+        aTitle: `${data.eFirstname} ${data.eLastname}`,
+        aSubtitle: `${data.ePassword}`,
+
+        cRole: "6736b34dfb2bc0504bc1d936"
       } });
 
       console.log(serverResponse)
@@ -51,7 +56,7 @@ const apiResponseHandler = {
           })
         )
 
-        return navigate(fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aDashboardRoute)
+        return navigate(fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.zDashboardRoute.aDashboardRoute)
       }
 
       return;

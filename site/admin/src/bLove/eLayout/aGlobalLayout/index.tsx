@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/aConnection/dReduxConnection";
 
-import userAPIEndpoint from "@/bLove/aAPI/aGlobalAPI/bUserAdministration/aUserAPIEndpoints";
+import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints";
 import GlobalComponent from "@/bLove/cComponent/aGlobalComponent";
 import globalSlice from "@/bLove/bRedux/aGlobalSlice";
 import apiResponseHandler from "./extras/aAPIResponseHandler";
@@ -30,7 +30,7 @@ const GlobalLayout = () => {
   
   // Auth Render
   useEffect(() => {
-    console.log("ExtraObject", (Redux.state.extraObject as any)?.ProfileRetrieve?._id);
+    // console.log("ExtraObject", (Redux.state.extraObject as any)?.ProfileRetrieve?._id);
     apiResponseHandler.retrieveAPIResponseHandler(APICall.retrieveAPIResponse, Redux);
   }, [(Redux.state.extraObject as any)?.ProfileRetrieve?._id])
   

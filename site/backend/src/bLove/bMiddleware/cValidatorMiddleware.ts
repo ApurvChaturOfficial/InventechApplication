@@ -12,9 +12,16 @@ import { BaseOneToManyModel } from '../aMCR/aModel/aSetting/eBaseOneToManyModel'
 import { UserModel } from '../aMCR/aModel/bUserAdministration/aUserModel';
 import { MenuModel } from '../aMCR/aModel/bUserAdministration/cMenuModel';
 import { RoleModel } from '../aMCR/aModel/bUserAdministration/bRoleModel';
-import { ProductModel } from '../aMCR/aModel/cProductManagement/aProductModel';
-import { CategoryModel } from '../aMCR/aModel/cProductManagement/bCategoryModel';
-import { TagModel } from '../aMCR/aModel/cProductManagement/cTagModel';
+
+import { ProductModel } from '../aMCR/aModel/cKisna/aProductManagement/aProductModel';
+import { CategoryModel } from '../aMCR/aModel/cKisna/aProductManagement/bCategoryModel';
+import { TagModel } from '../aMCR/aModel/cKisna/aProductManagement/cTagModel';
+import { ProductVariantModel } from '../aMCR/aModel/cKisna/aProductManagement/dProductVariantModel';
+import { OptionModel } from '../aMCR/aModel/cKisna/aProductManagement/eOptionModel';
+import { GroupModel } from '../aMCR/aModel/cKisna/aProductManagement/fGroupModel';
+
+import { QuestionModel } from '../aMCR/aModel/cHappify/aQuestionnaire/aQuestionModel';
+import { FactorModel } from '../aMCR/aModel/cHappify/aQuestionnaire/bFactorModel';
 
 
 const validatorMiddleware = (request: express.Request, response: express.Response, next: express.NextFunction) => {
@@ -669,12 +676,37 @@ const menuDeleteValidation = () => [
     })
 ]
 
+// Kisna
 // Product
 const productListValidation = () => []
 
 const productCreateValidation = () => [
   body("aTitle")
-    .notEmpty().withMessage("Please enter title")
+    .notEmpty().withMessage("Please enter title"),
+  body("cCategory")
+    .notEmpty().withMessage("Please select category")
+    .isMongoId().withMessage("Invalid MongoDB ID format for Category")
+    .custom(async (value: mongoose.ObjectId) => {
+      const retrieve = await CategoryModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Category Not Found", 404)
+      return true;
+    }),
+  body("cTag")
+    .notEmpty().withMessage("Please select tag")
+    .custom(async (value: mongoose.ObjectId[]) => {
+      await Promise.all(value.map(async (each) => {
+        const idAsString = each as unknown as string;
+  
+        if (!mongoose.Types.ObjectId.isValid(idAsString)) {
+          throw new ErrorUtility("Invalid MongoDB ID format for Tag", 400);
+        }
+  
+        const retrieve = await TagModel.findById(idAsString);
+        if (!retrieve) throw new ErrorUtility("Tag Not Found", 404);
+      }));
+      return true;
+    }),
+
 ]
 
 const productRetrieveValidation = () => [
@@ -700,7 +732,31 @@ const productUpdateValidation = () => [
      const retrieve = await ProductModel.findById(value);
       if (!retrieve) throw new ErrorUtility("Product Not Found", 404)
       return true;
-    })
+    }),
+  body("cCategory")
+    .notEmpty().withMessage("Please select category")
+    .isMongoId().withMessage("Invalid MongoDB ID format for Category")
+    .custom(async (value: mongoose.ObjectId) => {
+      const retrieve = await CategoryModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Category Not Found", 404)
+      return true;
+    }),
+  body("cTag")
+    .notEmpty().withMessage("Please select tag")
+    .custom(async (value: mongoose.ObjectId[]) => {
+      await Promise.all(value.map(async (each) => {
+        const idAsString = each as unknown as string;
+  
+        if (!mongoose.Types.ObjectId.isValid(idAsString)) {
+          throw new ErrorUtility("Invalid MongoDB ID format for Tag", 400);
+        }
+  
+        const retrieve = await TagModel.findById(idAsString);
+        if (!retrieve) throw new ErrorUtility("Tag Not Found", 404);
+      }));
+      return true;
+    }),
+
 ]
 
 const productDeleteValidation = () => [
@@ -810,6 +866,243 @@ const tagDeleteValidation = () => [
     })
 ]
 
+// Product Variant
+const productVariantListValidation = () => []
+
+const productVariantCreateValidation = () => [
+  body("aTitle")
+    .notEmpty().withMessage("Please enter title")
+]
+
+const productVariantRetrieveValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await ProductVariantModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Product Variant Not Found", 404)
+      return true;
+    })
+]
+
+const productVariantUpdateValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+     const retrieve = await ProductVariantModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Product Variant Not Found", 404)
+      return true;
+    })
+]
+
+const productVariantDeleteValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await ProductVariantModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Product Variant Not Found", 404)
+      return true;
+    })
+]
+
+// Option
+const optionListValidation = () => []
+
+const optionCreateValidation = () => [
+  body("aTitle")
+    .notEmpty().withMessage("Please enter title")
+]
+
+const optionRetrieveValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await OptionModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Option Not Found", 404)
+      return true;
+    })
+]
+
+const optionUpdateValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+     const retrieve = await OptionModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Option Not Found", 404)
+      return true;
+    })
+]
+
+const optionDeleteValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await OptionModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Option Not Found", 404)
+      return true;
+    })
+]
+
+// Group
+const groupListValidation = () => []
+
+const groupCreateValidation = () => [
+  body("aTitle")
+    .notEmpty().withMessage("Please enter title")
+]
+
+const groupRetrieveValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await GroupModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Group Not Found", 404)
+      return true;
+    })
+]
+
+const groupUpdateValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+     const retrieve = await GroupModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Group Not Found", 404)
+      return true;
+    })
+]
+
+const groupDeleteValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await GroupModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Group Not Found", 404)
+      return true;
+    })
+]
+
+// Happify
+// Question
+const questionListValidation = () => []
+
+const questionCreateValidation = () => [
+  body("aTitle")
+    .notEmpty().withMessage("Please enter title"),
+]
+
+const questionRetrieveValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await QuestionModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Question Not Found", 404)
+      return true;
+    }),
+]
+
+const questionUpdateValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+     const retrieve = await QuestionModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Question Not Found", 404)
+      return true;
+    }),
+]
+
+const questionDeleteValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await QuestionModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Question Not Found", 404)
+      return true;
+    })
+]
+
+// Factor
+const factorListValidation = () => []
+
+const factorCreateValidation = () => [
+  body("aTitle")
+    .notEmpty().withMessage("Please enter title"),
+]
+
+const factorRetrieveValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await FactorModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Factor Not Found", 404)
+      return true;
+    }),
+]
+
+const factorUpdateValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+     const retrieve = await FactorModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Factor Not Found", 404)
+      return true;
+    }),
+]
+
+const factorDeleteValidation = () => [
+  param("id")
+    .custom(value => {
+      if (!isValidObjectId(value)) throw new ErrorUtility("Please provide valid parameter", 404)
+      return true;
+    })
+    .custom(async value => {
+      const retrieve = await FactorModel.findById(value);
+      if (!retrieve) throw new ErrorUtility("Factor Not Found", 404)
+      return true;
+    })
+]
+
+
 export default validatorMiddleware;
 export {
   baseManyToOneListValidation,
@@ -869,6 +1162,7 @@ export {
   menuUpdateValidation,
   menuDeleteValidation,
 
+  // Kisna
   productListValidation,
   productCreateValidation,
   productRetrieveValidation,
@@ -886,4 +1180,36 @@ export {
   tagRetrieveValidation,
   tagUpdateValidation,
   tagDeleteValidation,
+
+  productVariantListValidation,
+  productVariantCreateValidation,
+  productVariantRetrieveValidation,
+  productVariantUpdateValidation,
+  productVariantDeleteValidation,
+
+  optionListValidation,
+  optionCreateValidation,
+  optionRetrieveValidation,
+  optionUpdateValidation,
+  optionDeleteValidation,
+
+  groupListValidation,
+  groupCreateValidation,
+  groupRetrieveValidation,
+  groupUpdateValidation,
+  groupDeleteValidation,
+
+  // Happify
+  questionListValidation,
+  questionCreateValidation,
+  questionRetrieveValidation,
+  questionUpdateValidation,
+  questionDeleteValidation,
+
+  factorListValidation,
+  factorCreateValidation,
+  factorRetrieveValidation,
+  factorUpdateValidation,
+  factorDeleteValidation,
+  
 }

@@ -1,29 +1,42 @@
-import * as React from "react"
 import {
+  Archive,
   AudioWaveform,
-  // BookOpen,
+  BookOpen,
   Bot,
+  Building2,
+  CalendarRange,
   Command,
   Frame,
   GalleryVerticalEnd,
   Map,
+  MonitorPlay,
   PieChart,
-  // Settings2,
+  ScrollText,
+  SquareAsterisk,
   SquareTerminal,
+  Store,
+  TrendingUp,
+  Warehouse,
 } from "lucide-react"
+import * as React from "react"
 
 import { NavMain } from "@/aConnection/bShadcnConnection/components/nav-main"
-// import { NavProjects } from "@/aConnection/bShadcnConnection/components/nav-projects"
 import { NavUser } from "@/aConnection/bShadcnConnection/components/nav-user"
-import { TeamSwitcher } from "@/aConnection/bShadcnConnection/components/team-switcher"
+// import { TeamSwitcher } from "@/aConnection/bShadcnConnection/components/team-switcher"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
   SidebarRail,
 } from "@/aConnection/bShadcnConnection/components/ui/sidebar"
 import fullRoute from "@/bLove/gRoute/bFullRoute"
+import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.jpg"
+import { Link } from "react-router-dom"
+import { cn } from "../lib/utils"
 
 
 // This is sample data.
@@ -35,50 +48,204 @@ const data = {
   },
   teams: [
     {
-      name: "Inventech Admin",
+      name: "InvenTech",
       logo: GalleryVerticalEnd,
-      plan: "Enterprise",
+      plan: "Brand",
     },
     {
-      name: "Inventech Corp.",
+      name: "InvenTech",
       logo: AudioWaveform,
-      plan: "Startup",
+      plan: "Company",
     },
     {
-      name: "Inventech Corp.",
+      name: "InvenTech",
       logo: Command,
-      plan: "Free",
+      plan: "Company",
     },
   ],
-  navMain: [
+
+  forDashboard: [
     {
-      title: "Base Setup",
-      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
-      icon: SquareTerminal,
+      title: "Dashboards",
+      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.zDashboardRoute.aDashboardRoute,
+      icon: BookOpen,
       isActive: false,
       items: [
         {
-          title: "Base Many To One",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.aListRoute,
-        },
-        {
-          title: "Base Many To Many",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.aListRoute,
-        },
-        {
-          title: "Base",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
-        },
-        {
-          title: "Base One To One",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.aListRoute,
-        },
-        {
-          title: "Base One To Many",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.aListRoute,
+          title: "Inventech Dashboard",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.zDashboardRoute.aDashboardRoute,
         },
       ],
     },
+  ],
+
+  forInvenTech: [
+    {
+      title: "Product Catalogue",
+      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.aListRoute,
+      icon: SquareAsterisk,
+      isActive: false,
+      items: [
+        {
+          title: "List",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.aListRoute,
+        },
+        {
+          title: "Create",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.bCreateRoute,
+        },
+        {
+          title: "Retrieve",
+          url: `${fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.cRetrieveRoute}/asdasd`,
+        },
+      ],
+    },
+    {
+      title: "Inventory & Stock",
+      url: "",
+      icon: Archive,
+      isActive: false,
+      items: [
+        {
+          title: "Sub Menu 1",
+          url: "",
+        },
+        {
+          title: "Sub Menu 2",
+          url: "",
+        },
+        {
+          title: "Sub Menu 3",
+          url: "",
+        },
+      ],
+    },
+    {
+      title: "Reports",
+      url: "",
+      icon: TrendingUp,
+      isActive: false,
+      items: [],
+    },
+    {
+      title: "Customer Orders",
+      url: "",
+      icon: MonitorPlay,
+      isActive: false,
+      items: [
+        {
+          title: "Sub Menu 1",
+          url: "",
+        },
+        {
+          title: "Sub Menu 2",
+          url: "",
+        },
+        {
+          title: "Sub Menu 3",
+          url: "",
+        },
+      ],
+    },
+    {
+      title: "Purchase Orders",
+      url: "",
+      icon: CalendarRange,
+      isActive: false,
+      items: [
+        {
+          title: "Sub Menu 1",
+          url: "",
+        },
+        {
+          title: "Sub Menu 2",
+          url: "",
+        },
+        {
+          title: "Sub Menu 3",
+          url: "",
+        },
+      ],
+    },
+    {
+      title: "Warehouse Management",
+      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.aListRoute,
+      icon: Warehouse,
+      isActive: false,
+      items: [
+        {
+          title: "List",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.aListRoute,
+        },
+        {
+          title: "Create",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.bCreateRoute,
+        },
+        {
+          title: "Retrieve",
+          url: `${fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.cRetrieveRoute}/sadsad`,
+        },
+      ],
+    },
+    {
+      title: "Store Management",
+      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.aListRoute,
+      icon: Store,
+      isActive: false,
+      items: [
+        {
+          title: "List",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.aListRoute,
+        },
+        {
+          title: "Create",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.bCreateRoute,
+        },
+        {
+          title: "Retrieve",
+          url: `${fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.cRetrieveRoute}/sadsad`,
+        },
+      ],
+    },
+    {
+      title: "My Organization",
+      url: "",
+      icon: Building2,
+      isActive: false,
+      items: [
+        {
+          title: "Location",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.eLocationRoute.aListRoute,
+        },
+        {
+          title: "Departments",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.fDepartmentRoute.aListRoute,
+        },
+        {
+          title: "Employees",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.eLocationRoute.aListRoute,
+        },
+        {
+          title: "Role",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.eLocationRoute.aListRoute,
+        },
+      ],
+    },
+    {
+      title: "Activity Log",
+      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.dActivityLogRoute.aListRoute,
+      icon: ScrollText,
+      isActive: false,
+      items: [
+        {
+          title: "List",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.dActivityLogRoute.aListRoute,
+        },
+      ],
+    },
+  ],
+
+  forAdministration: [
     {
       title: "User Administration",
       url: "#",
@@ -86,15 +253,15 @@ const data = {
       items: [
         {
           title: "User",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.aUserRoute.aListRoute,
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.aListRoute,
         },
         {
           title: "Role",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.bRoleRoute.aListRoute,
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.aListRoute,
         },
         {
           title: "Menu",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministration.cMenuRoute.aListRoute,
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.aListRoute,
         },
       ],
     },
@@ -183,6 +350,39 @@ const data = {
     //   ],
     // },
   ],
+
+  forDeveloper: [
+    {
+      title: "Base Setup",
+      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
+      icon: SquareTerminal,
+      isActive: false,
+      items: [
+        {
+          title: "Base Many To One",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.aListRoute,
+        },
+        {
+          title: "Base Many To Many",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.aListRoute,
+        },
+        {
+          title: "Base",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
+        },
+        {
+          title: "Base One To One",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.aListRoute,
+        },
+        {
+          title: "Base One To Many",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.aListRoute,
+        },
+      ],
+    },
+  ],
+
+
   projects: [
     {
       name: "Design Engineering",
@@ -203,13 +403,48 @@ const data = {
 }
 
 export function AppSidebar({ ReduxCall, APICall, navigate, ...props }: (React.ComponentProps<typeof Sidebar> & { ReduxCall?: any,APICall?: any, navigate?: any })) {
+  // JSX
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        {/* <TeamSwitcher teams={data.teams} /> */}
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <Link to={fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute} >
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg text-sidebar-primary-foreground">
+                  <GalleryVerticalEnd className="size-4" />
+                  <img
+                    src={BrandLogo}
+                    alt={"BrandLogo"}
+                    className={cn(
+                      "h-[40px] object-fit transition-all hover:scale-105 w-auto hidden dark:block",
+                      "portrait"
+                    )}
+                  />
+                  <img
+                    src={BrandLogo}
+                    alt={"BrandLogo"}
+                    className={cn(
+                      "h-[40px] object-fit transition-all hover:scale-105 w-auto block dark:hidden",
+                      "portrait"
+                    )}
+                  />
+                </div>
+                <div className="flex flex-col gap-0.5 leading-none">
+                  <span className="font-semibold">InvenTech - Admin</span>
+                  {/* <span className="">v1.0.0</span> */}
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain header="For Dashboard" items={data.forDashboard} />
+        <NavMain header="For Inventech" items={data.forInvenTech} />
+        <NavMain header="For Administration" items={data.forAdministration} />
+        <NavMain header="For Developer" items={data.forDeveloper} />
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>

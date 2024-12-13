@@ -18,12 +18,6 @@ const endpointRoute = {
           dProfileDeleteRoute: "profile-delete",
         },
         bSidebarRoute: {
-          aDashboardRoute: "dashboard",
-          bDataListRoute: "data-list",
-          cDataFormRoute: "data-form",
-          dDataFormTwoRoute: "data-form-two",
-          eDataCardRoute: "data-card",
-
           aBaseSetupRoute: {
             aBaseManyToOneRoute: {
               aListRoute: "base-many-to-one-list",
@@ -62,7 +56,7 @@ const endpointRoute = {
             },
           },
 
-          bUserAdministration: {
+          bUserAdministrationRoute: {
             aUserRoute: {
               aListRoute: "user-list",
               bCreateRoute: "user-create",
@@ -84,7 +78,48 @@ const endpointRoute = {
               dUpdateRoute: "menu-update",
               eDeleteRoute: "menu-delete",
             },
-          }
+          },
+
+          cInvenTechRoute: {
+            aOverallRoute: {
+              aProductCatalogueRoute: {
+                aListRoute: "product-catalogue-list",
+                bCreateRoute: "product-catalogue-create",
+                cRetrieveRoute: "product-catalogue-retrieve",
+              },
+              bWarehouseManagementRoute: {
+                aListRoute: "warehouse-management-list",
+                bCreateRoute: "warehouse-management-create",
+                cRetrieveRoute: "warehouse-management-retrieve",
+              },
+              cStoreManagementRoute: {
+                aListRoute: "store-management-list",
+                bCreateRoute: "store-management-create",
+                cRetrieveRoute: "store-management-retrieve",
+              },
+              dActivityLogRoute: {
+                aListRoute: "activity-log-list",
+              },
+              eLocationRoute: {
+                aListRoute: "location-list",
+              },
+              fDepartmentRoute: {
+                aListRoute: "department-list",
+                bCreateRoute: "department-create",
+                cRetrieveRoute: "department-retrieve",
+              },
+              gOpenPurchaseOrderRoute: {
+                aListRoute: "open-purchase-order-list",
+                bCreateRoute: "open-purchase-order-create",
+                cRetrieveRoute: "open-purchase-order-retrieve",
+              },
+            },
+
+            zDashboardRoute: {
+              aDashboardRoute: "inventech-dashboard"
+            }
+          },
+
         }
       }
     }
