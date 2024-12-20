@@ -1,6 +1,6 @@
 import React from "react"
 
-import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.jpg";
+import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.png";
 import { cn } from "@/aConnection/bShadcnConnection/lib/utils";
 import { useNavigate } from "react-router-dom";
 import fullRoute from "@/bLove/gRoute/bFullRoute";

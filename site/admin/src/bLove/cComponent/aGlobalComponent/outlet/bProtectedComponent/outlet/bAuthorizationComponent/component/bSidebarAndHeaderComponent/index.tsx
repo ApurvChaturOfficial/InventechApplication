@@ -1,22 +1,18 @@
-import React from "react"
+import React from "react";
 
 import { AppSidebar } from "@/aConnection/bShadcnConnection/components/app-sidebar";
+import { NavActions } from "@/aConnection/bShadcnConnection/components/nav-actions";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/aConnection/bShadcnConnection/components/ui/breadcrumb";
+import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/aConnection/bShadcnConnection/components/ui/dropdown-menu";
 import { Separator } from "@/aConnection/bShadcnConnection/components/ui/separator";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/aConnection/bShadcnConnection/components/ui/sidebar";
-import { NavActions } from "@/aConnection/bShadcnConnection/components/nav-actions";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from "@/aConnection/bShadcnConnection/components/ui/dropdown-menu";
-import { Link, useNavigate } from "react-router-dom";
-import fullRoute from "@/bLove/gRoute/bFullRoute";
-import { Avatar, AvatarFallback, AvatarImage } from "@/aConnection/bShadcnConnection/components/ui/avatar";
-import getInitialsUtility from "@/bLove/dUtility/aGetInitialsUtility";
-import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
-import { BookmarkX, FolderKey, KeyRound, LogIn, LogOut, Rat, User2, UserPen, UserPlus } from "lucide-react";
-import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/aConnection/dReduxConnection";
-import globalSlice from "@/bLove/bRedux/aGlobalSlice";
 import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints";
-import apiResponseHandler from "@/bLove/cComponent/aGlobalComponent/outlet/aUnprotectedComponent/component/aHeaderComponent/extras/aAPIResponseHandler";
+import globalSlice from "@/bLove/bRedux/aGlobalSlice";
+import { BellIcon } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) => {
@@ -65,6 +61,70 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
               <NavActions />
 
               <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="blue" size="icon" >
+                    <BellIcon className="h-5 w-5" />
+                    <span className="sr-only">Toggle user menu</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="min-w-1.5" >
+                  <DropdownMenuLabel>
+                    <div className="flex gap-20 items-center" >
+                      <h1 className="text-xl" >Notifications</h1>
+                      <Button size="sm"variant="blue" >
+                        View All
+                      </Button>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <div className="flex flex-col" >
+                        <p className="text-sm" >Stock Item Low</p>
+                        <p className="text-xs" >Shampoo from Lo'real is low. Place order now.</p>
+                      </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <div className="flex flex-col" >
+                        <p className="text-sm" >Stock Item Low</p>
+                        <p className="text-xs" >Shampoo from Lo'real is low. Place order now.</p>
+                      </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <div className="flex flex-col" >
+                        <p className="text-sm" >Stock Item Low</p>
+                        <p className="text-xs" >Shampoo from Lo'real is low. Place order now.</p>
+                      </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <div className="flex flex-col" >
+                        <p className="text-sm" >Stock Item Low</p>
+                        <p className="text-xs" >Shampoo from Lo'real is low. Place order now.</p>
+                      </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <div className="flex flex-col" >
+                        <p className="text-sm" >Stock Item Low</p>
+                        <p className="text-xs" >Shampoo from Lo'real is low. Place order now.</p>
+                      </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <div className="flex flex-col" >
+                        <p className="text-sm" >Stock Item Low</p>
+                        <p className="text-xs" >Shampoo from Lo'real is low. Place order now.</p>
+                      </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <div className="flex flex-col" >
+                        <p className="text-sm" >Stock Item Low</p>
+                        <p className="text-xs" >Shampoo from Lo'real is low. Place order now.</p>
+                      </div>
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   {
                     (ReduxCall.state.receivedObject as any)?.ProfileRetrieve?._id ? (
@@ -148,7 +208,7 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
                     )
                   }
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
             </div>
           </header>
           <div className="flex flex-1 flex-col gap-4 p-4 pt-0">

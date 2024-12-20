@@ -34,7 +34,7 @@ import {
   SidebarRail,
 } from "@/aConnection/bShadcnConnection/components/ui/sidebar"
 import fullRoute from "@/bLove/gRoute/bFullRoute"
-import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.jpg"
+import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.png"
 import { Link } from "react-router-dom"
 import { cn } from "../lib/utils"
 
@@ -419,7 +419,7 @@ export function AppSidebar({ ReduxCall, APICall, navigate, ...props }: (React.Co
                     alt={"BrandLogo"}
                     className={cn(
                       "h-[40px] object-fit transition-all hover:scale-105 w-auto hidden dark:block",
-                      "portrait"
+                      "aspect-square"
                     )}
                   />
                   <img
@@ -427,7 +427,7 @@ export function AppSidebar({ ReduxCall, APICall, navigate, ...props }: (React.Co
                     alt={"BrandLogo"}
                     className={cn(
                       "h-[40px] object-fit transition-all hover:scale-105 w-auto block dark:hidden",
-                      "portrait"
+                      "aspect-square"
                     )}
                   />
                 </div>

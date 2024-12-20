@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import getInitialsUtility from "@/bLove/dUtility/aGetInitialsUtility"
 import fullRoute from "@/bLove/gRoute/bFullRoute"
-import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.jpg";
+import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.png";
 import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints"
 import apiResponseHandler from "./extras/aAPIResponseHandler"
 
