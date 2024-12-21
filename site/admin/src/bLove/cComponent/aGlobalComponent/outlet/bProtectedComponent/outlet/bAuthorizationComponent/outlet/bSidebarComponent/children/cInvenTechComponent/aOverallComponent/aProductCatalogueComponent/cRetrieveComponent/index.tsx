@@ -12,10 +12,13 @@ import {
 import { formatLyricsWithHtml } from "@/aConnection/aAppConnection/HtmlTextParser";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/aConnection/bShadcnConnection/components/ui/table";
 import { ScrollArea, ScrollBar } from "@/aConnection/bShadcnConnection/components/ui/scroll-area";
-import { CheckCircle, OctagonMinus } from "lucide-react";
+import { CheckCircle, Edit2Icon, OctagonMinus, Trash2Icon } from "lucide-react";
 import data from "./extras/bData";
 import { cn } from "@/aConnection/bShadcnConnection/lib/utils";
 import SampleMiniListComponent from "./component/aSampleMiniListComponent";
+import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
+import { Link } from "react-router-dom";
+import fullRoute from "@/bLove/gRoute/bFullRoute";
 
 
 // type ProductCatalogueRetrieveComponentType = {
@@ -39,13 +42,25 @@ const ProductCatalogueRetrieveComponent = () => {
   return (
     <React.Fragment>
       {/* ProductCatalogueRetrieveComponent */}
-      <div className="flex-1">
-        <div className="mb-4" >
-          <h2 className="text-3xl font-bold tracking-tight">{data().header.title}</h2>
-          <p className="text-muted-foreground">
-            {/* {data().header.subtitle} */}
-          </p>
+      <div className="flex-1 space-y-8">
+        <div className="flex items-center justify-between space-y-2">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight">Product Information
+            </h2>
+            {/* <p className="text-muted-foreground">
+              Sample List Details
+            </p> */}
+          </div>
+          <div className="hidden lg:flex items-center space-x-2">
+            <Button asChild variant="blue" >
+              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.bCreateRoute} ><Edit2Icon /> Edit</Link>
+            </Button>
+            <Button asChild variant="destructive" >
+              <Link to={""} ><Trash2Icon /> Delete</Link>
+            </Button>
+          </div>
         </div>
+
         <div className="mx-auto grid flex-1 auto-rows-max gap-4">
           {/* {
             APICall.retrieveAPIResponse.isLoading ? "Loading..." : 
