@@ -59,25 +59,25 @@ export const columns: ColumnDef<Task>[] = [
       )
     },
   },
-  {
-    accessorKey: "address",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Address" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("address")}
-          </span>
-        </div>
-      )
-    },
-  },
+  // {
+  //   accessorKey: "address",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Address" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     return (
+  //       <div className="flex space-x-2">
+  //         <span className="max-w-[450px] truncate font-medium">
+  //           {row.getValue("address")}
+  //         </span>
+  //       </div>
+  //     )
+  //   },
+  // },
   {
     accessorKey: "manager",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Manager" />
+      <DataTableColumnHeader column={column} title="Created By" />
     ),
     cell: ({ row }) => {
       return (
@@ -89,41 +89,41 @@ export const columns: ColumnDef<Task>[] = [
       )
     },
   },
-  {
-    accessorKey: "contact",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Contact" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("contact")}
-          </span>
-        </div>
-      )
-    },
-  },
-  {
-    accessorKey: "employeeCount",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Emp. Count" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("employeeCount")}
-          </span>
-        </div>
-      )
-    },
-  },
+  // {
+  //   accessorKey: "contact",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Contact" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     return (
+  //       <div className="flex space-x-2">
+  //         <span className="max-w-[450px] truncate font-medium">
+  //           {row.getValue("contact")}
+  //         </span>
+  //       </div>
+  //     )
+  //   },
+  // },
+  // {
+  //   accessorKey: "employeeCount",
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader column={column} title="Emp. Count" />
+  //   ),
+  //   cell: ({ row }) => {
+  //     return (
+  //       <div className="flex space-x-2">
+  //         <span className="max-w-[450px] truncate font-medium">
+  //           {row.getValue("employeeCount")}
+  //         </span>
+  //       </div>
+  //     )
+  //   },
+  // },
   {
     id: "actions",
     cell: ({ row }) => (
       <DataTableRowActions 
-        row={row} route="product-catalogue" />
+        row={row} route="organziation-role" />
     ),
   },
 ]

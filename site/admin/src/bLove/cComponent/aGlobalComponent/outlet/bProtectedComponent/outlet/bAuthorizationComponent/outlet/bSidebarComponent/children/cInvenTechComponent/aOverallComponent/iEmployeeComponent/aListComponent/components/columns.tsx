@@ -62,7 +62,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "address",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Address" />
+      <DataTableColumnHeader column={column} title="Role" />
     ),
     cell: ({ row }) => {
       return (
@@ -77,7 +77,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "manager",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Manager" />
+      <DataTableColumnHeader column={column} title="Contact" />
     ),
     cell: ({ row }) => {
       return (
@@ -92,7 +92,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "contact",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Contact" />
+      <DataTableColumnHeader column={column} title="Email" />
     ),
     cell: ({ row }) => {
       return (
@@ -107,7 +107,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "employeeCount",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Emp. Count" />
+      <DataTableColumnHeader column={column} title="Date Added" />
     ),
     cell: ({ row }) => {
       return (
@@ -123,7 +123,7 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     cell: ({ row }) => (
       <DataTableRowActions 
-        row={row} route="product-catalogue" />
+        row={row} route="employee" />
     ),
   },
 ]

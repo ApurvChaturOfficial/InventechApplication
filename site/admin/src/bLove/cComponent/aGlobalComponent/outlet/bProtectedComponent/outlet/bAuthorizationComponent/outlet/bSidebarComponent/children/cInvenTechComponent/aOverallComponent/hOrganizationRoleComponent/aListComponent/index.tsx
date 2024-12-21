@@ -10,17 +10,17 @@ import { tasks } from "./data/tasks";
 import { DownloadCloudIcon, PlusIcon, RefreshCwIcon } from "lucide-react";
 
 
-const DepartmentListComponent = () => {
+const OrganizationRoleListComponent = () => {
   // JSX
   return (
     <React.Fragment>
-      {/* DepartmentListComponent */}
+      {/* OrganizationRoleListComponent */}
 
       <>
       <div className="h-full flex-1 flex-col space-y-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Department</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Roles</h2>
             {/* <p className="text-muted-foreground">
               Sample List Details
             </p> */}
@@ -42,4 +42,4 @@ const DepartmentListComponent = () => {
   )
 }
 
-export default DepartmentListComponent;
+export default OrganizationRoleListComponent;

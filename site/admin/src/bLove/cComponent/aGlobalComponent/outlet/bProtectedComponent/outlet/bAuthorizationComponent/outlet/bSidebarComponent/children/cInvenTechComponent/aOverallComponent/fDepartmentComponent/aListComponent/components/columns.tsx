@@ -93,7 +93,7 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     cell: ({ row }) => (
       <DataTableRowActions 
-        row={row} route="product-catalogue" />
+        row={row} route="department" />
     ),
   },
 ]

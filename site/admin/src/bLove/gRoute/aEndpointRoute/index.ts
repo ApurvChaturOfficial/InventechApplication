@@ -113,6 +113,12 @@ const endpointRoute = {
                 bCreateRoute: "open-purchase-order-create",
                 cRetrieveRoute: "open-purchase-order-retrieve",
               },
+              hOrganizationRoleRoute: {
+                aListRoute: "organziation-role-list",
+              },
+              iEmployeeRoute: {
+                aListRoute: "employee-role-list",
+              },
             },
 
             zDashboardRoute: {
