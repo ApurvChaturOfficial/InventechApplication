@@ -7,17 +7,17 @@ import { columns } from "./components/columns";
 import { tasks } from "./data/tasks";
 
 
-const SampleMiniListComponent = () => {
+const SampleMiniList2Component = () => {
   // JSX
   return (
     <React.Fragment>
-      {/* SampleMiniListComponent */}
+      {/* SampleMiniList2Component */}
 
-      <div className="">
+      <div className="overflow-hidden">
         <DataTable data={tasks} columns={columns} />
       </div>
     </React.Fragment>
   )
 }
 
-export default SampleMiniListComponent;
+export default SampleMiniList2Component;

@@ -12,11 +12,18 @@ import {
 import { formatLyricsWithHtml } from "@/aConnection/aAppConnection/HtmlTextParser";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/aConnection/bShadcnConnection/components/ui/table";
 import { ScrollArea, ScrollBar } from "@/aConnection/bShadcnConnection/components/ui/scroll-area";
-import { CheckCircle, OctagonMinus, PlusIcon } from "lucide-react";
+import { CheckCircle, Copy, Edit2Icon, OctagonMinus, PlusIcon, RefreshCwIcon, Trash2Icon } from "lucide-react";
 import data from "./extras/bData";
 import { cn } from "@/aConnection/bShadcnConnection/lib/utils";
 import SampleMiniListComponent from "./component/aSampleMiniListComponent";
 import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
+import { Link } from "react-router-dom";
+import fullRoute from "@/bLove/gRoute/bFullRoute";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/aConnection/bShadcnConnection/components/ui/dialog";
+import { Label } from "@/aConnection/bShadcnConnection/components/ui/label";
+import { Input } from "@/aConnection/bShadcnConnection/components/ui/input";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import SampleMiniList2Component from "./component/bSampleMiniList2Component";
 
 
 // type StoreManagementRetrieveComponentType = {
@@ -40,13 +47,25 @@ const StoreManagementRetrieveComponent = () => {
   return (
     <React.Fragment>
       {/* StoreManagementRetrieveComponent */}
-      <div className="flex-1">
-        <div className="mb-4" >
-          <h2 className="text-3xl font-bold tracking-tight">{data().header.title}</h2>
-          <p className="text-muted-foreground">
-            {/* {data().header.subtitle} */}
-          </p>
+      <div className="flex-1 space-y-8">
+        <div className="flex items-center justify-between space-y-2">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight">Store Information
+            </h2>
+            {/* <p className="text-muted-foreground">
+              Sample List Details
+            </p> */}
+          </div>
+          <div className="hidden lg:flex items-center space-x-2">
+            <Button asChild variant="blue" >
+              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.bCreateRoute} ><Edit2Icon /> Edit</Link>
+            </Button>
+            <Button asChild variant="destructive" >
+              <Link to={""} ><Trash2Icon /> Delete</Link>
+            </Button>
+          </div>
         </div>
+
         <div className="mx-auto grid flex-1 auto-rows-max gap-4">
           {/* {
             APICall.retrieveAPIResponse.isLoading ? "Loading..." : 
@@ -163,14 +182,67 @@ const StoreManagementRetrieveComponent = () => {
                               ))}
                               
                               {((eachValue.type === "data-list" &&
-                                <li className={cn("flex flex-col gap-1 items-start justify-between col-span-5", eachValue?.style)} key={indexValue} >
-                                  <span className="w-full flex flex-row justify-between" >
+                                <li className={cn("flex flex-col gap-2 items-start justify-between col-span-5", eachValue?.style)} key={indexValue} >
+                                  <span className="w-full flex flex-row align-middle items-center gap-4" >
                                     <span className="text-muted-foreground">
                                       {eachValue.label}:
                                     </span>
-                                    <Button variant="blue" >
-                                      <PlusIcon /> Add Product
-                                    </Button>
+                                    <Dialog>
+                                      <DialogTrigger asChild>
+                                        <Button variant="blue" size="sm" ><PlusIcon /> Add Product</Button>
+                                      </DialogTrigger>
+                                      <DialogContent>
+                                        <DialogHeader>
+                                          <DialogTitle>Add Product</DialogTitle>
+                                          {/* <DialogDescription>
+                                            Anyone who has this link will be able to view this.
+                                          </DialogDescription> */}
+                                        </DialogHeader>
+
+                                        <ul className="grid gap-3 grid-cols-2">
+                                          <li className={cn("flex flex-col gap-1 items-start justify-between", eachValue?.style)} key={indexValue} >
+                                            <span className="text-muted-foreground">
+                                              {"Store Name"}:
+                                            </span>
+                                            <span className="w-4/5 truncate text-lg" >{"Dubai Center"}</span>
+                                          </li>
+                                          <li className={cn("flex flex-col gap-1 items-start justify-between col-span-5 ", eachValue?.style)} key={indexValue} >
+                                            <span className="text-muted-foreground">
+                                              {"Product List"}:
+                                            </span>
+                                            <SampleMiniList2Component />
+                                          </li>
+                                        </ul>
+
+                                        {/* <div className="flex items-center space-x-2">
+                                          <div className="grid flex-1 gap-2">
+                                            <Label htmlFor="link" className="sr-only">
+                                              Link
+                                            </Label>
+                                            <Input
+                                              id="link"
+                                              defaultValue="https://ui.shadcn.com/docs/installation"
+                                              readOnly
+                                            />
+                                          </div>
+                                          <Button type="submit" size="sm" className="px-3">
+                                            <span className="sr-only">Copy</span>
+                                            <Copy />
+                                          </Button>
+                                        </div> */}
+                                        <DialogFooter className="sm:justify-between">
+                                          <DialogClose asChild>
+                                            <Button type="button" variant="destructive">
+                                              Cancel
+                                            </Button>
+                                          </DialogClose>
+                                          <Button type="button" variant="blue">
+                                            <PlusIcon /> Add
+                                          </Button>
+                                        </DialogFooter>
+                                      </DialogContent>
+                                    </Dialog>
+
                                   </span>
                                   <SampleMiniListComponent />
                                 </li>
