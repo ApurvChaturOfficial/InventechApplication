@@ -131,7 +131,7 @@ const ProductCatalogueCreateComponent = (_props: ProductCatalogueCreateComponent
   // JSX
   return (
     <React.Fragment>
-      <div className="flex-1 p-4">
+      <div className="flex-1">
         <div className="mb-8" >
           <h2 className="text-3xl font-bold tracking-tight">{data().header.title}</h2>
           <p className="text-muted-foreground">

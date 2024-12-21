@@ -171,10 +171,10 @@ const ProductCatalogueRetrieveComponent = () => {
                               ))}
                               
                               {((eachValue.type === "normal-list" &&
-                                <li className={cn("flex flex-col gap-1 items-start justify-between col-span-5", eachValue?.style)} key={indexValue} >
-                                  <span className="text-muted-foreground">
+                                <li className={cn("flex flex-col gap-4 items-start justify-between col-span-5", eachValue?.style)} key={indexValue} >
+                                  {/* <span className="text-muted-foreground">
                                     {eachValue.label}:
-                                  </span>
+                                  </span> */}
                                   <Table>
                                     <TableHeader className="bg-gray-300" >
                                       <TableRow>
