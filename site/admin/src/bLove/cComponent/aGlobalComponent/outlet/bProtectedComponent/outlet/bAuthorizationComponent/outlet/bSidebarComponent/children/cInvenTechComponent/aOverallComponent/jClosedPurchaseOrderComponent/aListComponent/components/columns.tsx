@@ -1,15 +1,10 @@
 import { ColumnDef } from "@tanstack/react-table"
 
-
-import { statuses } from "../data/data"
 import { Task } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
+import { statuses } from "../data/data"
 import { cn } from "@/aConnection/bShadcnConnection/lib/utils"
-import { Button } from "@/aConnection/bShadcnConnection/components/ui/button"
-import { CheckCircle, RefreshCwIcon } from "lucide-react"
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/aConnection/bShadcnConnection/components/ui/dialog"
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons"
 
 export const columns: ColumnDef<Task>[] = [
   // {
@@ -83,15 +78,15 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className={cn(
           "flex w-[150px] items-center",
-          status.value === "unfullfilled" && "text-red-500",
-          status.value === "partiallyFullfilled" && "text-yellow-500",
+          status.value === "unfullfilled" && "text-green-500",
+          status.value === "partiallyFullfilled" && "text-green-500",
           status.value === "fullfilled" && "text-green-500",
         )}>
           {status.icon && (
             <status.icon className={cn(
               "mr-2 h-4 w-4 text-muted-foreground",
-              status.value === "unfullfilled" && "text-red-500",
-              status.value === "partiallyFullfilled" && "text-yellow-500",
+              status.value === "unfullfilled" && "text-green-500",
+              status.value === "partiallyFullfilled" && "text-green-500",
               status.value === "fullfilled" && "text-green-500",
             )} />
           )}
@@ -149,41 +144,16 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
-    accessorKey: "close",
+    accessorKey: "closed",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Close" />
+      <DataTableColumnHeader column={column} title="Closed" />
     ),
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button variant="blue" size="sm" >
-                <CheckCircle /> {row.getValue("close")}
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle className="flex items-center gap-2 text-amber-500 " ><ExclamationTriangleIcon /> <div className="mb-1" >Warning!</div></DialogTitle>
-                <DialogDescription>
-                  Closing PO will assume all items are received.
-                  This will update in stock as inward entry. <br />
-                  Do you wish to continue?
-                </DialogDescription>
-              </DialogHeader>
-              <DialogFooter className="sm:justify-start">
-                <Button type="button" variant="yellow">
-                  Yes
-                </Button>
-                <DialogClose asChild>
-                  <Button type="button" variant="destructive">
-                    No
-                  </Button>
-                </DialogClose>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
-
+          <span className="max-w-[450px] truncate font-medium">
+            {row.getValue("closed")}
+          </span>
         </div>
       )
     },
@@ -196,3 +166,4 @@ export const columns: ColumnDef<Task>[] = [
     ),
   },
 ]
+

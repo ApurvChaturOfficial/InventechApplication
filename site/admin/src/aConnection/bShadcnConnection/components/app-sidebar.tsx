@@ -154,16 +154,12 @@ const data = {
       isActive: false,
       items: [
         {
-          title: "Sub Menu 1",
-          url: "",
+          title: "Open",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.aListRoute,
         },
         {
-          title: "Sub Menu 2",
-          url: "",
-        },
-        {
-          title: "Sub Menu 3",
-          url: "",
+          title: "Closed",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.jClosedPurchaseOrderRoute.aListRoute,
         },
       ],
     },

@@ -124,6 +124,8 @@ const OpenPurchaseOrderListPage = React.lazy(() => import('@/bLove/fPage/aGlobal
 const OpenPurchaseOrderCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/gOpenPurchaseOrderPage/bCreatePage'));
 const OpenPurchaseOrderRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/gOpenPurchaseOrderPage/cRetrievePage'));
 
+const ClosedPurchaseOrderListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/jClosedPurchaseOrderPage/aListPage'));
+
 
 const AppConnection = () => {
   // Redux Call
@@ -255,6 +257,8 @@ const AppConnection = () => {
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.bCreateRoute}`} element={<OpenPurchaseOrderCreatePage />} />
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.cRetrieveRoute}/:id`} element={<OpenPurchaseOrderRetrievePage />} />
                   
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.jClosedPurchaseOrderRoute.aListRoute}`} element={<ClosedPurchaseOrderListPage />} />
+
                 </Route>
               </Route>
             </Route>

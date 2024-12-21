@@ -119,6 +119,11 @@ const endpointRoute = {
               iEmployeeRoute: {
                 aListRoute: "employee-role-list",
               },
+              jClosedPurchaseOrderRoute: {
+                aListRoute: "closed-purchase-order-list",
+                bCreateRoute: "closed-purchase-order-create",
+                cRetrieveRoute: "closed-purchase-order-retrieve",
+              },
             },
 
             zDashboardRoute: {

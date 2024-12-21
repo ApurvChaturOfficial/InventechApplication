@@ -4,10 +4,11 @@ import {
   ArrowUpIcon,
   CheckCircledIcon,
   CircleIcon,
+  CrossCircledIcon,
   QuestionMarkCircledIcon,
   StopwatchIcon,
 } from "@radix-ui/react-icons"
-import { BadgeDollarSignIcon, Star, StarHalfIcon, StarOff } from "lucide-react"
+import { Star, StarHalfIcon, StarOff } from "lucide-react"
 
 export const labels = [
   {
@@ -46,14 +47,19 @@ export const statuses = [
     icon: CheckCircledIcon,
   },
   {
+    value: "canceled",
+    label: "Canceled",
+    icon: CrossCircledIcon,
+  },
+  {
     value: "unfullfilled",
-    label: "Unfullfilled",
-    icon: StarOff,
+    label: "Fullfilled",
+    icon: Star,
   },
   {
     value: "partiallyFullfilled",
-    label: "Partially Fullfilled",
-    icon: StarHalfIcon,
+    label: "Fullfilled",
+    icon: Star,
   },
   {
     value: "fullfilled",
