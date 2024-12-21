@@ -7,7 +7,7 @@ import {
   QuestionMarkCircledIcon,
   StopwatchIcon,
 } from "@radix-ui/react-icons"
-import { BadgeDollarSignIcon, Star, StarHalfIcon, StarOff } from "lucide-react"
+import { Star, StarHalfIcon, StarOff } from "lucide-react"
 
 export const labels = [
   {

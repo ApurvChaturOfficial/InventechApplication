@@ -1,14 +1,13 @@
-import React from "react"
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/aConnection/bShadcnConnection/components/ui/scroll-area";
 
-import { DataTable } from "./components/data-table";
-import { columns } from "./components/columns";
-import { tasks } from "./data/tasks";
-import { DownloadCloudIcon, PlusIcon, RefreshCwIcon } from "lucide-react";
 import fullRoute from "@/bLove/gRoute/bFullRoute";
+import { DownloadCloudIcon, PlusIcon } from "lucide-react";
+import { columns } from "./components/columns";
+import { DataTable } from "./components/data-table";
+import { tasks } from "./data/tasks";
 
 
 const WarehouseManagementListComponent = () => {

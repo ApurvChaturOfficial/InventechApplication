@@ -1,20 +1,17 @@
-import React from "react"
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/aConnection/bShadcnConnection/components/ui/scroll-area";
 
-import { DataTable } from "./components/data-table";
-import { columns } from "./components/columns";
-import { tasks } from "./data/tasks";
-import { DownloadCloudIcon, MenuIcon, PlusIcon, RefreshCwIcon } from "lucide-react";
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/aConnection/bShadcnConnection/components/ui/dialog";
+import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/aConnection/bShadcnConnection/components/ui/dropdown-menu";
 import fullRoute from "@/bLove/gRoute/bFullRoute";
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
-import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/aConnection/bShadcnConnection/components/ui/dropdown-menu";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/aConnection/bShadcnConnection/components/ui/dialog";
-import { Label } from "@/aConnection/bShadcnConnection/components/ui/label";
-import { Input } from "@/aConnection/bShadcnConnection/components/ui/input";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { DownloadCloudIcon, MenuIcon, PlusIcon, RefreshCwIcon } from "lucide-react";
+import { columns } from "./components/columns";
+import { DataTable } from "./components/data-table";
+import { tasks } from "./data/tasks";
 
 
 const ProductCatalogueListComponent = () => {

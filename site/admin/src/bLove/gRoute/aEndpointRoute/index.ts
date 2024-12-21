@@ -102,6 +102,8 @@ const endpointRoute = {
               },
               eLocationRoute: {
                 aListRoute: "location-list",
+                bCreateRoute: "location-create",
+                cRetrieveRoute: "location-retrieve",
               },
               fDepartmentRoute: {
                 aListRoute: "department-list",
@@ -115,9 +117,13 @@ const endpointRoute = {
               },
               hOrganizationRoleRoute: {
                 aListRoute: "organziation-role-list",
+                bCreateRoute: "organziation-role-create",
+                cRetrieveRoute: "organziation-role-retrieve",
               },
               iEmployeeRoute: {
                 aListRoute: "employee-role-list",
+                bCreateRoute: "employee-role-create",
+                cRetrieveRoute: "employee-role-retrieve",
               },
               jClosedPurchaseOrderRoute: {
                 aListRoute: "closed-purchase-order-list",

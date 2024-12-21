@@ -1,29 +1,26 @@
-import React from "react"
 import moment from 'moment';
+import React from "react";
 
-import UserBlockComponent from "@/bLove/cComponent/aGlobalComponent/component/aUserBlockComponent"
+import UserBlockComponent from "@/bLove/cComponent/aGlobalComponent/component/aUserBlockComponent";
 
+import { formatLyricsWithHtml } from "@/aConnection/aAppConnection/HtmlTextParser";
+import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/aConnection/bShadcnConnection/components/ui/card"
-import { formatLyricsWithHtml } from "@/aConnection/aAppConnection/HtmlTextParser";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/aConnection/bShadcnConnection/components/ui/table";
+} from "@/aConnection/bShadcnConnection/components/ui/card";
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/aConnection/bShadcnConnection/components/ui/dialog";
 import { ScrollArea, ScrollBar } from "@/aConnection/bShadcnConnection/components/ui/scroll-area";
-import { CheckCircle, Copy, Edit2Icon, OctagonMinus, PlusIcon, RefreshCwIcon, Trash2Icon } from "lucide-react";
-import data from "./extras/bData";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/aConnection/bShadcnConnection/components/ui/table";
 import { cn } from "@/aConnection/bShadcnConnection/lib/utils";
-import SampleMiniListComponent from "./component/aSampleMiniListComponent";
-import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
-import { Link } from "react-router-dom";
 import fullRoute from "@/bLove/gRoute/bFullRoute";
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/aConnection/bShadcnConnection/components/ui/dialog";
-import { Label } from "@/aConnection/bShadcnConnection/components/ui/label";
-import { Input } from "@/aConnection/bShadcnConnection/components/ui/input";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { CheckCircle, Edit2Icon, OctagonMinus, PlusIcon, Trash2Icon } from "lucide-react";
+import { Link } from "react-router-dom";
+import SampleMiniListComponent from "./component/aSampleMiniListComponent";
 import SampleMiniList2Component from "./component/bSampleMiniList2Component";
+import data from "./extras/bData";
 
 
 // type StoreManagementRetrieveComponentType = {
