@@ -30,7 +30,7 @@ const StoreManagementListComponent = () => {
               <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.bCreateRoute} ><PlusIcon /> Create</Link>
             </Button>
             <Button asChild variant="blue" >
-              <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+              <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
             </Button>
           </div>
         </div>

@@ -10,9 +10,9 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/aConnection/bSh
 import { RootState } from "@/aConnection/dReduxConnection";
 import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints";
 import globalSlice from "@/bLove/bRedux/aGlobalSlice";
-import { BellIcon } from "lucide-react";
+import { BellIcon, SettingsIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) => {
@@ -60,11 +60,17 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
             <div className="ml-auto px-3 flex gap-2">
               <NavActions />
 
+              <Button variant="blue" size="icon" asChild >
+                <Link to="some-setting-page" >
+                  <SettingsIcon className="h-5 w-5" />
+                </Link>
+              </Button>
+
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="blue" size="icon" >
                     <BellIcon className="h-5 w-5" />
-                    <span className="sr-only">Toggle user menu</span>
+                    <span className="sr-only">What's this</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="min-w-1.5" >

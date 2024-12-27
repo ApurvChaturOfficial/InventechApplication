@@ -37,7 +37,7 @@ const SampleListComponent = () => {
               <Link to={"/"} ><PlusIcon /> Create</Link>
             </Button>
             <Button asChild variant="secondary" >
-              <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+              <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
             </Button>
           </div>
         </div>

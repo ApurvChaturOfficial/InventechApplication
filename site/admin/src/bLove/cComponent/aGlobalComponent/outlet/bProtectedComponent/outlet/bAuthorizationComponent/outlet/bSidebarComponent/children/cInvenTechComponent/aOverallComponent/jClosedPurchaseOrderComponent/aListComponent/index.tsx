@@ -63,7 +63,7 @@ const ClosedPurchaseOrderListComponent = () => {
                 </DialogContent>
               </Dialog>
               <Button asChild variant="blue" >
-                <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+                <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
               </Button>
             </div>
             <div className="flex lg:hidden items-center space-x-2">
@@ -114,12 +114,12 @@ const ClosedPurchaseOrderListComponent = () => {
                   <DropdownMenuGroup className="flex flex-col gap-1" >
                     <DropdownMenuItem asChild >
                       <Button asChild variant="blue" >
-                        <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.bCreateRoute} ><PlusIcon /> Create</Link>
+                        <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.jClosedPurchaseOrderRoute.bCreateRoute} ><PlusIcon /> Create</Link>
                       </Button>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild >
                       <Button asChild variant="blue" >
-                        <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+                        <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
                       </Button>                    
                     </DropdownMenuItem>
                   </DropdownMenuGroup>

@@ -26,10 +26,10 @@ const OrganizationRoleListComponent = () => {
           </div>
           <div className="flex items-center space-x-2">
             <Button asChild variant="blue" >
-              <Link to={"/"} ><PlusIcon /> Create</Link>
+              <Link to={"#"} ><PlusIcon /> Create</Link>
             </Button>
             <Button asChild variant="blue" >
-              <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+              <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
             </Button>
           </div>
         </div>

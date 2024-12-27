@@ -12,7 +12,7 @@ const SampleMiniListComponent = () => {
     <React.Fragment>
       {/* SampleMiniListComponent */}
 
-      <div className="">
+      <div className="w-full">
         <DataTable data={tasks} columns={columns} />
       </div>
     </React.Fragment>

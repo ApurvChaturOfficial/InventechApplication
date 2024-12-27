@@ -7,6 +7,7 @@ import { DownloadCloudIcon, PlusIcon } from "lucide-react";
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
 import { tasks } from "./data/tasks";
+import fullRoute from "@/bLove/gRoute/bFullRoute";
 
 
 const OpenPurchaseOrderListComponent = () => {
@@ -26,10 +27,10 @@ const OpenPurchaseOrderListComponent = () => {
           </div>
           <div className="flex items-center space-x-2">
             <Button asChild variant="blue" >
-              <Link to={"/"} ><PlusIcon /> Create</Link>
+              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.bCreateRoute} ><PlusIcon /> Create</Link>
             </Button>
             <Button asChild variant="blue" >
-              <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+              <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
             </Button>
           </div>
         </div>

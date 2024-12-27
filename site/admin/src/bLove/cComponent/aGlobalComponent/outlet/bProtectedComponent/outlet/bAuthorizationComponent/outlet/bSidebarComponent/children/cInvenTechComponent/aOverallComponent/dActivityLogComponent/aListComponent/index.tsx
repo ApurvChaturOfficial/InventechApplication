@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/aConnection/bShadcnConnection/components/ui/scroll-area";
 
 import { DownloadCloudIcon } from "lucide-react";
 import { columns } from "./components/columns";
@@ -27,15 +26,12 @@ const ActivityLogListComponent = () => {
           </div>
           <div className="flex items-center space-x-2">
             <Button asChild variant="blue" >
-              <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+              <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
             </Button>
           </div>
         </div>
 
-        <ScrollArea className="w-auto whitespace-nowrap rounded-md border-none">
-          <DataTable data={tasks} columns={columns as any} />
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+        <DataTable data={tasks} columns={columns as any} />
       </div>
     </>
     </React.Fragment>

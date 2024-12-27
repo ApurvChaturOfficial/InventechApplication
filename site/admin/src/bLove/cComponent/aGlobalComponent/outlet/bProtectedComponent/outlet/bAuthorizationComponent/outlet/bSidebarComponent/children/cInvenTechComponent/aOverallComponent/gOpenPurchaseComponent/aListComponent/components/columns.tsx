@@ -10,6 +10,7 @@ import { statuses } from "../data/data"
 import { Task } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
+import { Link } from "react-router-dom"
 
 export const columns: ColumnDef<Task>[] = [
   // {
@@ -60,7 +61,9 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex space-x-2">
           <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("supplier")}
+            <Link to={`/open-purchase-order-retrieve/_id`} className="hover:underline" >
+              {row.getValue("supplier")}
+            </Link>
           </span>
         </div>
       )

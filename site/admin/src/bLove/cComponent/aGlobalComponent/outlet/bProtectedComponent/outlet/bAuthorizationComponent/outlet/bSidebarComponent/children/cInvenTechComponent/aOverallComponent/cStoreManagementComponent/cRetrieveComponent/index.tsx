@@ -196,16 +196,16 @@ const StoreManagementRetrieveComponent = () => {
                                           </DialogDescription> */}
                                         </DialogHeader>
 
-                                        <ul className="grid gap-3 grid-cols-2">
+                                        <ul className="grid gap-4 grid-cols-2">
                                           <li className={cn("flex flex-col gap-1 items-start justify-between", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
+                                            <span className="text-muted-foreground text-sm">
                                               {"Store Name"}:
                                             </span>
                                             <span className="w-4/5 truncate text-lg" >{"Dubai Center"}</span>
                                           </li>
                                           <li className={cn("flex flex-col gap-1 items-start justify-between col-span-5 ", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
-                                              {"Product List"}:
+                                            <span className="text-muted-foreground text-sm">
+                                              {"Search & Select Product"}:
                                             </span>
                                             <SampleMiniList2Component />
                                           </li>

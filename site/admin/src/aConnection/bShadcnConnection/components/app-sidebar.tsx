@@ -85,73 +85,61 @@ const data = {
       url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.aListRoute,
       icon: SquareAsterisk,
       isActive: false,
-      items: [
-        {
-          title: "List",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.aListRoute,
-        },
-        {
-          title: "Create",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.bCreateRoute,
-        },
-        {
-          title: "Retrieve",
-          url: `${fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.cRetrieveRoute}/asdasd`,
-        },
-      ],
+      isCollapsible: false,
+      items: [],
     },
     {
       title: "Inventory & Stock",
-      url: "",
+      url: "#",
       icon: Archive,
       isActive: false,
+      isCollapsible: true,
       items: [
         {
-          title: "Sub Menu 1",
-          url: "",
+          title: "General",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.kInventoryGeneralRoute.aListRoute,
         },
         {
-          title: "Sub Menu 2",
-          url: "",
+          title: "Inward",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.lInventoryInwardRoute.aListRoute,
         },
         {
-          title: "Sub Menu 3",
-          url: "",
+          title: "Outward",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.mInventoryOutwardRoute.aListRoute,
         },
       ],
     },
     {
       title: "Reports",
-      url: "",
+      url: "#",
       icon: TrendingUp,
       isActive: false,
+      isCollapsible: false,
       items: [],
     },
     {
       title: "Customer Orders",
-      url: "",
+      url: "#",
       icon: MonitorPlay,
       isActive: false,
+      isCollapsible: true,
       items: [
         {
-          title: "Sub Menu 1",
-          url: "",
+          title: "Received from Magneto",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.nCustomerOrderMagnetoRoute.aListRoute,
         },
         {
-          title: "Sub Menu 2",
-          url: "",
-        },
-        {
-          title: "Sub Menu 3",
-          url: "",
+          title: "Pushed to Shopify",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.oCustomerOrderShopifyRoute.aListRoute,
         },
       ],
     },
     {
       title: "Purchase Orders",
-      url: "",
+      url: "#",
       icon: CalendarRange,
       isActive: false,
+      isCollapsible: true,
       items: [
         {
           title: "Open",
@@ -168,46 +156,23 @@ const data = {
       url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.aListRoute,
       icon: Warehouse,
       isActive: false,
-      items: [
-        {
-          title: "List",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.aListRoute,
-        },
-        {
-          title: "Create",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.bCreateRoute,
-        },
-        {
-          title: "Retrieve",
-          url: `${fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.cRetrieveRoute}/sadsad`,
-        },
-      ],
+      isCollapsible: false,
+      items: [],
     },
     {
       title: "Store Management",
       url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.aListRoute,
       icon: Store,
       isActive: false,
-      items: [
-        {
-          title: "List",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.aListRoute,
-        },
-        {
-          title: "Create",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.bCreateRoute,
-        },
-        {
-          title: "Retrieve",
-          url: `${fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.cStoreManagementRoute.cRetrieveRoute}/sadsad`,
-        },
-      ],
+      isCollapsible: false,
+      items: [],
     },
     {
       title: "My Organization",
-      url: "",
+      url: "#",
       icon: Building2,
       isActive: false,
+      isCollapsible: true,
       items: [
         {
           title: "Location",
@@ -232,12 +197,8 @@ const data = {
       url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.dActivityLogRoute.aListRoute,
       icon: ScrollText,
       isActive: false,
-      items: [
-        {
-          title: "List",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.dActivityLogRoute.aListRoute,
-        },
-      ],
+      isCollapsible: false,
+      items: [],
     },
   ],
 
@@ -439,8 +400,8 @@ export function AppSidebar({ ReduxCall, APICall, navigate, ...props }: (React.Co
       <SidebarContent>
         <NavMain header="For Dashboard" items={data.forDashboard} />
         <NavMain header="For Inventech" items={data.forInvenTech} />
-        <NavMain header="For Administration" items={data.forAdministration} />
-        <NavMain header="For Developer" items={data.forDeveloper} />
+        {/* <NavMain header="For Administration" items={data.forAdministration} /> */}
+        {/* <NavMain header="For Developer" items={data.forDeveloper} /> */}
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>

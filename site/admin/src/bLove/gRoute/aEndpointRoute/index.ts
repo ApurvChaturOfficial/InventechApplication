@@ -121,14 +121,39 @@ const endpointRoute = {
                 cRetrieveRoute: "organziation-role-retrieve",
               },
               iEmployeeRoute: {
-                aListRoute: "employee-role-list",
-                bCreateRoute: "employee-role-create",
-                cRetrieveRoute: "employee-role-retrieve",
+                aListRoute: "employee-list",
+                bCreateRoute: "employee-create",
+                cRetrieveRoute: "employee-retrieve",
               },
               jClosedPurchaseOrderRoute: {
                 aListRoute: "closed-purchase-order-list",
                 bCreateRoute: "closed-purchase-order-create",
                 cRetrieveRoute: "closed-purchase-order-retrieve",
+              },
+              kInventoryGeneralRoute: {
+                aListRoute: "inventory-general-list",
+                bCreateRoute: "inventory-general-create",
+                cRetrieveRoute: "inventory-general-retrieve",
+              },
+              lInventoryInwardRoute: {
+                aListRoute: "inventory-inward-list",
+                bCreateRoute: "inventory-inward-create",
+                cRetrieveRoute: "inventory-inward-retrieve",
+              },
+              mInventoryOutwardRoute: {
+                aListRoute: "inventory-outward-list",
+                bCreateRoute: "inventory-outward-create",
+                cRetrieveRoute: "inventory-outward-retrieve",
+              },
+              nCustomerOrderMagnetoRoute: {
+                aListRoute: "customer-order-magento-list",
+                bCreateRoute: "customer-order-magento-create",
+                cRetrieveRoute: "customer-order-magento-retrieve",
+              },
+              oCustomerOrderShopifyRoute: {
+                aListRoute: "customer-order-shopify-list",
+                bCreateRoute: "customer-order-shopify-create",
+                cRetrieveRoute: "customer-order-shopify-retrieve",
               },
             },
 

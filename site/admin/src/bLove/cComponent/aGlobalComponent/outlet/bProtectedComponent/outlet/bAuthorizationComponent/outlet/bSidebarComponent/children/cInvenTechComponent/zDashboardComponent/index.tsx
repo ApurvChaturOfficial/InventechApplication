@@ -1,12 +1,12 @@
 import React from "react"
 
-import { CalendarDateRangePicker } from "./component/date-range-picker";
-import { Overview } from "./component/overview";
-import { RecentSales } from "./component/recent-sales";
+// import { CalendarDateRangePicker } from "./component/date-range-picker";
+// import { Overview } from "./component/overview";
+// import { RecentSales } from "./component/recent-sales";
 
-import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/aConnection/bShadcnConnection/components/ui/tabs";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/aConnection/bShadcnConnection/components/ui/card";
+// import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/aConnection/bShadcnConnection/components/ui/tabs";
+// import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/aConnection/bShadcnConnection/components/ui/card";
 
 
 const DashboardComponent = () => {
@@ -28,12 +28,12 @@ const DashboardComponent = () => {
         <div className="flex-1 space-y-4">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-3xl font-bold tracking-tight">Inventech Dashboard</h2>
-            <div className="flex items-center space-x-2">
+            {/* <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
               <Button>Download</Button>
-            </div>
+            </div> */}
           </div>
-          <Tabs defaultValue="overview" className="space-y-4">
+          {/* <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="analytics" disabled>
@@ -172,7 +172,7 @@ const DashboardComponent = () => {
                 </Card>
               </div>
             </TabsContent>
-          </Tabs>
+          </Tabs> */}
         </div>
       </div>
     </React.Fragment>

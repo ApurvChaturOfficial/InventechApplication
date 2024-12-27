@@ -1,44 +1,38 @@
 export const tasks = [
   {
-    "id": "TASK-8782",
-    "title": "You can't compress the program without quantifying the open-source SSD pixel!",
-    "status": "in progress",
-    "label": "documentation",
-    "priority": "medium"
+    "id": "87828782",
+    "name": "Fishing",
+    "empCount": "780",
+    "dateAdded": "23 Dec, 2024",
   },
   {
-    "id": "TASK-7878",
-    "title": "Try to calculate the EXE feed, maybe it will index the multi-byte pixel!",
-    "status": "backlog",
-    "label": "documentation",
-    "priority": "medium"
+    "id": "78787878",
+    "name": "Accounts",
+    "empCount": "987",
+    "dateAdded": "23 Dec, 2024",
   },
   {
-    "id": "TASK-7839",
-    "title": "We need to bypass the neural TCP card!",
-    "status": "todo",
-    "label": "bug",
-    "priority": "high"
+    "id": "78397839",
+    "name": "Printing",
+    "empCount": "123",
+    "dateAdded": "29 Feb, 1997",
   },
   {
-    "id": "TASK-5562",
-    "title": "The SAS interface is down, bypass the open-source pixel so we can back up the PNG bandwidth!",
-    "status": "backlog",
-    "label": "feature",
-    "priority": "medium"
+    "id": "55625562",
+    "name": "Accounts",
+    "empCount": "987",
+    "dateAdded": "03 Mar, 2032",
   },
   {
-    "id": "TASK-8686",
-    "title": "I'll parse the wireless SSL protocol, that should driver the API panel!",
-    "status": "canceled",
-    "label": "feature",
-    "priority": "medium"
+    "id": "86868686",
+    "name": "Russia",
+    "empCount": "324",
+    "dateAdded": "03 Mar, 2032",
   },
   {
-    "id": "TASK-5207",
-    "title": "The SMS interface is down, copy the bluetooth bus so we can quantify the VGA card!",
-    "status": "in progress",
-    "label": "bug",
-    "priority": "low"
-  }
+    "id": "12801280",
+    "name": "Finance",
+    "empCount": "418",
+    "dateAdded": "29 Feb, 1997",
+  },
 ]

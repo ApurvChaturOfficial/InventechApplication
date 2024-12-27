@@ -17,27 +17,27 @@ const WarehouseManagementListComponent = () => {
       {/* WarehouseManagementListComponent */}
 
       <>
-      <div className="h-full flex-1 flex-col space-y-8 md:flex">
-        <div className="flex items-center justify-between space-y-2">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight">Warehouse Management</h2>
-            {/* <p className="text-muted-foreground">
-              Sample List Details
-            </p> */}
+        <div className="h-full flex-1 flex-col space-y-8 md:flex">
+          <div className="flex items-center justify-between space-y-2">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight">Warehouse Management</h2>
+              {/* <p className="text-muted-foreground">
+                Sample List Details
+              </p> */}
+            </div>
+            <div className="flex items-center space-x-2">
+              <Button asChild variant="blue" >
+                <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.bCreateRoute} ><PlusIcon /> Create</Link>
+              </Button>
+              <Button asChild variant="blue" >
+                <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
+              </Button>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <Button asChild variant="blue" >
-              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.bWarehouseManagementRoute.bCreateRoute} ><PlusIcon /> Create</Link>
-            </Button>
-            <Button asChild variant="blue" >
-              <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
-            </Button>
-          </div>
-        </div>
 
-        <DataTable data={tasks} columns={columns as any} />
-      </div>
-    </>
+          <DataTable data={tasks} columns={columns as any} />
+        </div>
+      </>
     </React.Fragment>
   )
 }

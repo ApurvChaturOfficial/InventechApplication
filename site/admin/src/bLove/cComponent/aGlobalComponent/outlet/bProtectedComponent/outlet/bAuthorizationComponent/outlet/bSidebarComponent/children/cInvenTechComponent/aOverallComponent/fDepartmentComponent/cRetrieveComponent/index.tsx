@@ -55,7 +55,7 @@ const DepartmentRetrieveComponent = () => {
           </div>
           <div className="hidden lg:flex items-center space-x-2">
             <Button asChild variant="blue" >
-              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.eLocationRoute.bCreateRoute} ><Edit2Icon /> Edit</Link>
+              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.fDepartmentRoute.bCreateRoute} ><Edit2Icon /> Edit</Link>
             </Button>
             <Button asChild variant="destructive" >
               <Link to={""} ><Trash2Icon /> Delete</Link>
@@ -265,13 +265,13 @@ const DepartmentRetrieveComponent = () => {
 
                                         <ul className="grid gap-3 grid-cols-2">
                                           <li className={cn("flex flex-col gap-1 items-start justify-between", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
+                                            <span className="text-muted-foreground text-sm">
                                               {"Location Name"}:
                                             </span>
                                             <span className="w-4/5 truncate text-lg" >{"Dubai Center"}</span>
                                           </li>
                                           <li className={cn("flex flex-col gap-1 items-start justify-between col-span-5 ", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
+                                            <span className="text-muted-foreground text-sm">
                                               {"Employee List"}:
                                             </span>
                                             <SampleMiniList2Component />

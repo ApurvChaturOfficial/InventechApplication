@@ -5,6 +5,7 @@ import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
 import { statuses } from "../data/data"
 import { cn } from "@/aConnection/bShadcnConnection/lib/utils"
+import { Link } from "react-router-dom"
 
 export const columns: ColumnDef<Task>[] = [
   // {
@@ -55,7 +56,9 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex space-x-2">
           <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("supplier")}
+              <Link to={`/closed-purchase-order-retrieve/_id`} className="hover:underline" >
+                {row.getValue("supplier")}
+              </Link>
           </span>
         </div>
       )
@@ -162,7 +165,7 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     cell: ({ row }) => (
       <DataTableRowActions 
-        row={row} route="open-purchase-order" />
+        row={row} route="closed-purchase-order" />
     ),
   },
 ]

@@ -21,6 +21,8 @@ import { Link } from "react-router-dom";
 import SampleMiniListComponent from "./component/aSampleMiniListComponent";
 import SampleMiniList2Component from "./component/bSampleMiniList2Component";
 import data from "./extras/bData";
+import SampleMiniList3Component from './component/cSampleMiniList3Component';
+import SampleMiniList4Component from './component/dSampleMiniList4Component';
 
 
 // type LocationRetrieveComponentType = {
@@ -198,13 +200,13 @@ const LocationRetrieveComponent = () => {
 
                                         <ul className="grid gap-3 grid-cols-2">
                                           <li className={cn("flex flex-col gap-1 items-start justify-between", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
+                                            <span className="text-muted-foreground text-sm">
                                               {"Loaction Name"}:
                                             </span>
                                             <span className="w-4/5 truncate text-lg" >{"Dubai Center"}</span>
                                           </li>
                                           <li className={cn("flex flex-col gap-1 items-start justify-between col-span-5 ", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
+                                            <span className="text-muted-foreground text-sm">
                                               {"Department List"}:
                                             </span>
                                             <SampleMiniList2Component />
@@ -265,16 +267,16 @@ const LocationRetrieveComponent = () => {
 
                                         <ul className="grid gap-3 grid-cols-2">
                                           <li className={cn("flex flex-col gap-1 items-start justify-between", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
+                                            <span className="text-muted-foreground text-sm">
                                               {"Location Name"}:
                                             </span>
                                             <span className="w-4/5 truncate text-lg" >{"Dubai Center"}</span>
                                           </li>
                                           <li className={cn("flex flex-col gap-1 items-start justify-between col-span-5 ", eachValue?.style)} key={indexValue} >
-                                            <span className="text-muted-foreground">
+                                            <span className="text-muted-foreground text-sm">
                                               {"Employee List"}:
                                             </span>
-                                            <SampleMiniList2Component />
+                                            <SampleMiniList4Component />
                                           </li>
                                         </ul>
 
@@ -308,7 +310,7 @@ const LocationRetrieveComponent = () => {
                                     </Dialog>
 
                                   </span>
-                                  <SampleMiniListComponent />
+                                  <SampleMiniList3Component />
                                 </li>
                               ))}
                               

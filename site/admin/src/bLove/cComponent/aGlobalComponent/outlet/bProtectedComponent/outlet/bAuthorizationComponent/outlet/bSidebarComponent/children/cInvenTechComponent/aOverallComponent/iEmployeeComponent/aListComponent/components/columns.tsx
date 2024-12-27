@@ -3,6 +3,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Task } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
+import { Link } from "react-router-dom"
 
 export const columns: ColumnDef<Task>[] = [
   // {
@@ -53,14 +54,16 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex space-x-2">
           <span className="max-w-[250px] truncate font-medium">
-            {row.getValue("name")}
+            <Link to={`/employee-retrieve/_id`} className="hover:underline" >
+              {row.getValue("name")}
+            </Link>
           </span>
         </div>
       )
     },
   },
   {
-    accessorKey: "address",
+    accessorKey: "role",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Role" />
     ),
@@ -68,22 +71,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex space-x-2">
           <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("address")}
-          </span>
-        </div>
-      )
-    },
-  },
-  {
-    accessorKey: "manager",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Contact" />
-    ),
-    cell: ({ row }) => {
-      return (
-        <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("manager")}
+            {row.getValue("role")}
           </span>
         </div>
       )
@@ -92,7 +80,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "contact",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Email" />
+      <DataTableColumnHeader column={column} title="Contact" />
     ),
     cell: ({ row }) => {
       return (
@@ -105,7 +93,22 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
-    accessorKey: "employeeCount",
+    accessorKey: "email",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Email" />
+    ),
+    cell: ({ row }) => {
+      return (
+        <div className="flex space-x-2">
+          <span className="max-w-[450px] truncate font-medium">
+            {row.getValue("email")}
+          </span>
+        </div>
+      )
+    },
+  },
+  {
+    accessorKey: "dateAdded",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Date Added" />
     ),
@@ -113,7 +116,7 @@ export const columns: ColumnDef<Task>[] = [
       return (
         <div className="flex space-x-2">
           <span className="max-w-[450px] truncate font-medium">
-            {row.getValue("employeeCount")}
+            {row.getValue("dateAdded")}
           </span>
         </div>
       )

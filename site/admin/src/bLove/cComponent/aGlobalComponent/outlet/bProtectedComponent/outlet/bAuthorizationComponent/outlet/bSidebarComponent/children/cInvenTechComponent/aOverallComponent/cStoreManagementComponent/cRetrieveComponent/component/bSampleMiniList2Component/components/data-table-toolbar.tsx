@@ -3,6 +3,7 @@
 import { Table } from "@tanstack/react-table"
 
 import { Input } from "@/aConnection/bShadcnConnection/components/ui/input"
+import { DataTableViewOptions } from "./data-table-view-options"
 
 
 interface DataTableToolbarProps<TData> {
@@ -50,7 +51,7 @@ export function DataTableToolbar<TData>({
           </Button>
         )} */}
       </div>
-      {/* <DataTableViewOptions table={table} /> */}
+      <DataTableViewOptions table={table} />
     </div>
   )
 }

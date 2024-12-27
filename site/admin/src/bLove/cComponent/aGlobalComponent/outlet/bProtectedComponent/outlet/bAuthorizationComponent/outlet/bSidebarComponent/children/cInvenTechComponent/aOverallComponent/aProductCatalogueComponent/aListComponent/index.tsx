@@ -66,7 +66,7 @@ const ProductCatalogueListComponent = () => {
                 <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.bCreateRoute} ><PlusIcon /> Create</Link>
               </Button>
               <Button asChild variant="blue" >
-                <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+                <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
               </Button>
             </div>
             <div className="flex lg:hidden items-center space-x-2">
@@ -122,7 +122,7 @@ const ProductCatalogueListComponent = () => {
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild >
                       <Button asChild variant="blue" >
-                        <Link to={"/"} ><DownloadCloudIcon /> Export</Link>
+                        <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
                       </Button>                    
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
