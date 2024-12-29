@@ -4,6 +4,7 @@ import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.png";
 import { cn } from "@/aConnection/bShadcnConnection/lib/utils";
 import { useNavigate } from "react-router-dom";
 import fullRoute from "@/bLove/gRoute/bFullRoute";
+import backgroundImage from "@/bLove/hAsset/authImage.png";
 
 
 const AuthenticationComponent = ({ children }: { children: React.ReactNode }) => {
@@ -16,7 +17,7 @@ const AuthenticationComponent = ({ children }: { children: React.ReactNode }) =>
       {/* AuthenticationComponent */}
       <div className="container relative h-[100vh] flex-col items-center justify-center md:grid lg:max-w-full lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-[#d5a26a] dark:bg-[#262761]" />
+          <div className="absolute inset-0 object-cover" style={{ backgroundImage: `url(${backgroundImage})` }}/>
           <div className="relative z-20 flex items-center text-lg font-medium">
             <div onClick={() => navigate(fullRoute.aGlobalRoute.aUnprotectedRoute.aHomeRoute)} >
               <img

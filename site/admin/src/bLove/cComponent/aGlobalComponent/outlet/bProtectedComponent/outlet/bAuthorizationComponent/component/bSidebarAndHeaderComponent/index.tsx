@@ -13,6 +13,7 @@ import globalSlice from "@/bLove/bRedux/aGlobalSlice";
 import { BellIcon, SettingsIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { QuestionMarkIcon } from "@radix-ui/react-icons";
 
 
 const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) => {
@@ -61,7 +62,13 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
               <NavActions />
 
               <Button variant="blue" size="icon" asChild >
-                <Link to="some-setting-page" >
+                <Link to="how-to-use-page" >
+                  <QuestionMarkIcon className="h-5 w-5" />
+                </Link>
+              </Button>
+
+              <Button variant="blue" size="icon" asChild >
+                <Link to="setting-page" >
                   <SettingsIcon className="h-5 w-5" />
                 </Link>
               </Button>

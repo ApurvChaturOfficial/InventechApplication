@@ -119,6 +119,8 @@ const DepartmentCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/
 const DepartmentRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/fDepartmentPage/cRetrievePage'));
 
 const OrganizationRoleListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/hOrganizationRolePage/aListPage'));
+const OrganizationRoleCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/hOrganizationRolePage/bCreatePage'));
+const OrganizationRoleRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/hOrganizationRolePage/cRetrievePage'));
 
 const EmployeeListPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/iEmployeePage/aListPage'));
 const EmployeeCreatePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/iEmployeePage/bCreatePage'));
@@ -150,6 +152,11 @@ const CustomerOrderShopifyListPage = React.lazy(() => import('@/bLove/fPage/aGlo
 const CustomerOrderShopifyRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/oCustomerOrderShopifyPage/cRetrievePage'));
 
 const SettingPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/pSettingPage'));
+
+const NewProfileRetrievePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/qNewProfileRetrievePage'));
+const NewProfileEditPage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/rNewProfileEditPage'));
+
+const HowToUsePage = React.lazy(() => import('@/bLove/fPage/aGlobalPage/outlet/bProtectedPage/outlet/bAuthorizationPage/outlet/bSidebarPage/page/cInvenTechPage/aOverallPage/sHowToUsePage'));
 
 
 const AppConnection = () => {
@@ -277,6 +284,8 @@ const AppConnection = () => {
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.fDepartmentRoute.cRetrieveRoute}/:id`} element={<DepartmentRetrievePage />} />
                   
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.hOrganizationRoleRoute.aListRoute}`} element={<OrganizationRoleListPage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.hOrganizationRoleRoute.bCreateRoute}`} element={<OrganizationRoleCreatePage />} />
+                  <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.hOrganizationRoleRoute.cRetrieveRoute}/:id`} element={<OrganizationRoleRetrievePage />} />
                   
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.iEmployeeRoute.aListRoute}`} element={<EmployeeListPage />} />
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.iEmployeeRoute.bCreateRoute}`} element={<EmployeeCreatePage />} />
@@ -307,7 +316,12 @@ const AppConnection = () => {
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.oCustomerOrderShopifyRoute.aListRoute}`} element={<CustomerOrderShopifyListPage />} />
                   <Route path={`${endpointRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.oCustomerOrderShopifyRoute.cRetrieveRoute}/:id`} element={<CustomerOrderShopifyRetrievePage />} />
 
-                  <Route path={`some-setting-page`} element={<SettingPage />} />
+                  <Route path={`setting-page`} element={<SettingPage />} />
+
+                  <Route path={`new-profile-retrieve`} element={<NewProfileRetrievePage />} />
+                  <Route path={`new-profile-edit`} element={<NewProfileEditPage />} />
+
+                  <Route path={`how-to-use-page`} element={<HowToUsePage />} />
                 
                 </Route>
               </Route>

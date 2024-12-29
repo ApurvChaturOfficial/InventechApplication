@@ -1,16 +1,14 @@
 "use client"
 
 import {
-  BookmarkX,
   ChevronsUpDown,
-  FolderKey,
   KeyRound,
   LogIn,
   LogOut,
   Rat,
   User2,
   UserPen,
-  UserPlus,
+  UserPlus
 } from "lucide-react"
 
 import {
@@ -33,12 +31,12 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/aConnection/bShadcnConnection/components/ui/sidebar"
+import apiResponseHandler from "@/bLove/cComponent/aGlobalComponent/outlet/aUnprotectedComponent/component/aHeaderComponent/extras/aAPIResponseHandler"
 import getInitialsUtility from "@/bLove/dUtility/aGetInitialsUtility"
-import React from "react"
-import { Button } from "./ui/button"
-import { Link } from "react-router-dom"
 import fullRoute from "@/bLove/gRoute/bFullRoute"
-import apiResponseHandler from "@/bLove/cComponent/aGlobalComponent/outlet/aUnprotectedComponent/component/aHeaderComponent/extras/aAPIResponseHandler";
+import React from "react"
+import { Link } from "react-router-dom"
+import { Button } from "./ui/button"
 
 
 export function NavUser({
@@ -133,16 +131,16 @@ export function NavUser({
               (ReduxCall.state.receivedObject as any)?.ProfileRetrieve?._id ? (
                 <DropdownMenuGroup>
                   <DropdownMenuItem asChild >
-                    <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.aProfileRetrieveRoute} >
+                    <Link to={"new-profile-retrieve"} >
                       <Rat /> View Profile
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild >
-                    <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.bProfileUpdateRoute} >
+                    <Link to={"new-profile-edit"} >
                       <UserPen /> Edit Profile
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild >
+                  {/* <DropdownMenuItem asChild >
                     <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.cProfilePasswordUpdateRoute} >
                       <FolderKey /> Change Password
                     </Link>
@@ -151,7 +149,7 @@ export function NavUser({
                     <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.aTopbarRoute.dProfileDeleteRoute} >
                       <BookmarkX /> Delete Profile
                     </Link>
-                  </DropdownMenuItem>
+                  </DropdownMenuItem> */}
                   <DropdownMenuItem asChild >
                     <span onClick={() => apiResponseHandler.logoutAPIResponseHandler(APICall.logoutAPITrigger, navigate, ReduxCall)} >
                       <LogOut /> Sign Out

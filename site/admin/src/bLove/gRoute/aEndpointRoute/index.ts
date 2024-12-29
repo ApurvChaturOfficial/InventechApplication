@@ -116,9 +116,9 @@ const endpointRoute = {
                 cRetrieveRoute: "open-purchase-order-retrieve",
               },
               hOrganizationRoleRoute: {
-                aListRoute: "organziation-role-list",
-                bCreateRoute: "organziation-role-create",
-                cRetrieveRoute: "organziation-role-retrieve",
+                aListRoute: "organization-role-list",
+                bCreateRoute: "organization-role-create",
+                cRetrieveRoute: "organization-role-retrieve",
               },
               iEmployeeRoute: {
                 aListRoute: "employee-list",

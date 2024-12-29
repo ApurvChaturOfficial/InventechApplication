@@ -8,6 +8,7 @@ import { Button } from "@/aConnection/bShadcnConnection/components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle
 } from "@/aConnection/bShadcnConnection/components/ui/card";
@@ -371,10 +372,109 @@ const SettingComponent = () => {
                     </Card>
                   </TabsContent>
                   <TabsContent value="sync-setting" className='flex flex-col gap-4' >
-
+                    <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4" >
+                      <CardHeader className="flex flex-row items-start bg-muted/50">
+                        <div className="grid gap-0.5">
+                          <CardTitle className="group flex items-center gap-2 text-lg">
+                            {"Sync Settings"}
+                          </CardTitle>
+                          <CardDescription className='text-red-600' >Sync settings are manager by Admin. Contact Admin for any changes & requests</CardDescription>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-6 text-sm">
+                      <div className="grid gap-3">
+                        <Table>
+                          <TableHeader className="bg-gray-300" >
+                            <TableRow>
+                              <TableHead className="w-[300px]">Name</TableHead>
+                              <TableHead className="w-[100px]">Type</TableHead>
+                              <TableHead className="w-[100px]">To / From</TableHead>
+                              <TableHead className="w-[100px]">Module</TableHead>
+                              <TableHead className="w-[100px]">Duration</TableHead>
+                              <TableHead className="w-[100px]">Change Request</TableHead>
+                            </TableRow>
+                          </TableHeader>
+                          <TableBody>
+                          <TableRow>
+                              <TableCell className="font-medium">Product Sync</TableCell>
+                              <TableCell className="font-medium">Inward</TableCell>
+                              <TableCell className="font-medium">From</TableCell>
+                              <TableCell className="font-medium">Magneto</TableCell>
+                              <TableCell className="font-medium">1 hr</TableCell>
+                              <TableCell className="font-medium">
+                                <Button size="sm" variant="blue" >Request Change</Button>
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell className="font-medium">Purchase Order Sync</TableCell>
+                              <TableCell className="font-medium">Self</TableCell>
+                              <TableCell className="font-medium">Within</TableCell>
+                              <TableCell className="font-medium">Inventech</TableCell>
+                              <TableCell className="font-medium">Instant</TableCell>
+                              <TableCell className="font-medium">
+                                <Button size="sm" variant="blue" >Request Change</Button>
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell className="font-medium">Fulfilled Purchase Order to Closed Purchase Order</TableCell>
+                              <TableCell className="font-medium">Self</TableCell>
+                              <TableCell className="font-medium">Within</TableCell>
+                              <TableCell className="font-medium">Inventech</TableCell>
+                              <TableCell className="font-medium">Instant</TableCell>
+                              <TableCell className="font-medium">
+                                <Button size="sm" variant="blue" >Request Change</Button>
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell className="font-medium">Outward Inventory Sync</TableCell>
+                              <TableCell className="font-medium">Self</TableCell>
+                              <TableCell className="font-medium">Within</TableCell>
+                              <TableCell className="font-medium">Inventech</TableCell>
+                              <TableCell className="font-medium">Instant</TableCell>
+                              <TableCell className="font-medium">
+                                <Button size="sm" variant="blue" >Request Change</Button>
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell className="font-medium">Inventory Push</TableCell>
+                              <TableCell className="font-medium">Outward</TableCell>
+                              <TableCell className="font-medium">To</TableCell>
+                              <TableCell className="font-medium">Magneto</TableCell>
+                              <TableCell className="font-medium">1 hr</TableCell>
+                              <TableCell className="font-medium">
+                                <Button size="sm" variant="blue" >Request Change</Button>
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell className="font-medium">Customer Order Push</TableCell>
+                              <TableCell className="font-medium">Outward</TableCell>
+                              <TableCell className="font-medium">To</TableCell>
+                              <TableCell className="font-medium">Shopify</TableCell>
+                              <TableCell className="font-medium">1 hr</TableCell>
+                              <TableCell className="font-medium">
+                                <Button size="sm" variant="blue" >Request Change</Button>
+                              </TableCell>
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                      </div>
+                      </CardContent>
+                    </Card>
                   </TabsContent>
                   <TabsContent value="miscellaneous" className='flex flex-col gap-4' >
-
+                    <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4" >
+                      <CardHeader className="flex flex-row items-start bg-muted/50">
+                        <div className="grid gap-0.5">
+                          <CardTitle className="group flex items-center gap-2 text-lg">
+                            {"Version"}
+                          </CardTitle>
+                          <CardDescription>2.3.0</CardDescription>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="p-6 text-sm">
+                        <Button variant="blue" >Contact Developers</Button>
+                      </CardContent>
+                    </Card>
                   </TabsContent>
                 </Tabs>                                
               </div>
