@@ -12,17 +12,17 @@ import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, Di
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 
-const CustomerOrderMagnetoListComponent = () => {
+const CustomerOrderMagentoListComponent = () => {
   // JSX
   return (
     <React.Fragment>
-      {/* CustomerOrderMagnetoListComponent */}
+      {/* CustomerOrderMagentoListComponent */}
 
       <>
       <div className="h-full flex-1 flex-col space-y-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Order Receieved From Magneto</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Order Receieved From Magento</h2>
             {/* <p className="text-muted-foreground">
               Sample List Details
             </p> */}
@@ -30,7 +30,7 @@ const CustomerOrderMagnetoListComponent = () => {
           <div className="flex items-center space-x-2">
             <div className="flex flex-col text-right" >
               <p className="text-xs text-muted-foreground" >Last Sync on Sept 20, 2024 at 4:30 PM.</p>
-              <p className="text-xs text-green-500" >Auto Sync is ON. Syncing from Magneto.</p>
+              <p className="text-xs text-green-500" >Auto Sync is ON. Syncing from Magento.</p>
             </div>
             <Dialog>
               <DialogTrigger asChild>
@@ -61,7 +61,7 @@ const CustomerOrderMagnetoListComponent = () => {
               </DialogContent>
             </Dialog>
             <Button asChild variant="blue" >
-              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.nCustomerOrderMagnetoRoute.bCreateRoute} ><PlusIcon /> Create</Link>
+              <Link to={fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.nCustomerOrderMagentoRoute.bCreateRoute} ><PlusIcon /> Create</Link>
             </Button>
             <Button asChild variant="blue" >
               <Link to={"#"} ><DownloadCloudIcon /> Export</Link>
@@ -76,4 +76,4 @@ const CustomerOrderMagnetoListComponent = () => {
   )
 }
 
-export default CustomerOrderMagnetoListComponent;
+export default CustomerOrderMagentoListComponent;

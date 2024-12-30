@@ -28,7 +28,7 @@ const SampleListComponent = () => {
           <div className="flex items-center space-x-2">
             <div className="flex flex-col text-right" >
               <p className="text-xs text-muted-foreground" >Last Sync on Sept 20, 2024 at 4:30 PM.</p>
-              <p className="text-xs text-muted-foreground text-green-400" >Auto Sync is ON. Syncing from Magneto.</p>
+              <p className="text-xs text-muted-foreground text-green-400" >Auto Sync is ON. Syncing from Magento.</p>
             </div>
             <Button asChild variant="secondary" >
               <Link to={"/"} ><RefreshCwIcon /> Sync</Link>

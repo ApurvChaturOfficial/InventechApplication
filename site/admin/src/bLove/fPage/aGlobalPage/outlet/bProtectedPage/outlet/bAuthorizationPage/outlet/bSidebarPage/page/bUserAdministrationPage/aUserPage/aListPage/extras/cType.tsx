@@ -116,7 +116,7 @@ export const listColumn: ColumnDef<List>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("eFirstname")}
           </span>
         </div>
@@ -131,7 +131,7 @@ export const listColumn: ColumnDef<List>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("eLastname")}
           </span>
         </div>
@@ -146,7 +146,7 @@ export const listColumn: ColumnDef<List>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("eEmail")}
           </span>
         </div>
@@ -161,7 +161,7 @@ export const listColumn: ColumnDef<List>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("eMobile")}
           </span>
         </div>

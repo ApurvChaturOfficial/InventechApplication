@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { AppSidebar } from "@/aConnection/bShadcnConnection/components/app-sidebar";
 import { NavActions } from "@/aConnection/bShadcnConnection/components/nav-actions";
@@ -10,15 +10,19 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/aConnection/bSh
 import { RootState } from "@/aConnection/dReduxConnection";
 import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints";
 import globalSlice from "@/bLove/bRedux/aGlobalSlice";
-import { BellIcon, SettingsIcon } from "lucide-react";
+import { BellIcon, SettingsIcon, StarIcon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { QuestionMarkIcon } from "@radix-ui/react-icons";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { QuestionMarkIcon, StarFilledIcon } from "@radix-ui/react-icons";
 
 
 const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) => {
   // Variable
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  // State Variable
+  const [favourite, setFavourite] = useState(false)
 
   // Redux Call
   const ReduxCall = {
@@ -44,6 +48,9 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
             <div className="flex items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator orientation="vertical" className="mr-2 h-4" />
+              {favourite && <StarIcon className="w-4 h-4 hover:cursor-pointer -ml-2" onClick={() => setFavourite(!favourite)} />}
+              {!favourite && <StarFilledIcon className="w-4 h-4 hover:cursor-pointer -ml-2" onClick={() => setFavourite(!favourite)} />}
+              <Separator orientation="vertical" className="mr-2 h-4" />
               <Breadcrumb>
                 <BreadcrumbList>
                   <BreadcrumbItem className="hidden md:block">
@@ -61,13 +68,13 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
             <div className="ml-auto px-3 flex gap-2">
               <NavActions />
 
-              <Button variant="blue" size="icon" asChild >
+              <Button variant="secondary" size="icon" asChild className={`hover:text-white hover:bg-blue-500 ${pathname.startsWith("/how-to-use-page") && "bg-blue-500"}`} >
                 <Link to="how-to-use-page" >
                   <QuestionMarkIcon className="h-5 w-5" />
                 </Link>
               </Button>
 
-              <Button variant="blue" size="icon" asChild >
+              <Button variant="secondary" size="icon" asChild className={`hover:text-white hover:bg-blue-500 ${pathname.startsWith("/setting-page") && "bg-blue-500"}`} >
                 <Link to="setting-page" >
                   <SettingsIcon className="h-5 w-5" />
                 </Link>
@@ -75,7 +82,7 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="blue" size="icon" >
+                  <Button variant="secondary" size="icon" className={`hover:text-white hover:bg-blue-500`} >
                     <BellIcon className="h-5 w-5" />
                     <span className="sr-only">What's this</span>
                   </Button>
@@ -84,7 +91,7 @@ const SidebarAndHeaderComponent = ({ children }: { children: React.ReactNode }) 
                   <DropdownMenuLabel>
                     <div className="flex gap-20 items-center" >
                       <h1 className="text-xl" >Notifications</h1>
-                      <Button size="sm"variant="blue" >
+                      <Button size="sm" variant="blue" >
                         View All
                       </Button>
                     </div>

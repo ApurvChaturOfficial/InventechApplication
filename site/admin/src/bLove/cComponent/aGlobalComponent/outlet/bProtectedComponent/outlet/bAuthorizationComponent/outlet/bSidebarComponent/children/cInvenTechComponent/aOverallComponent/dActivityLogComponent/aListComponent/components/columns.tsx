@@ -39,7 +39,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("timestamp")}
           </span>
         </div>
@@ -54,7 +54,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("username")}
           </span>
         </div>
@@ -69,7 +69,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("employee")}
           </span>
         </div>
@@ -84,7 +84,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("role")}
           </span>
         </div>
@@ -99,7 +99,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("module")}
           </span>
         </div>
@@ -114,7 +114,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("crud")}
           </span>
         </div>

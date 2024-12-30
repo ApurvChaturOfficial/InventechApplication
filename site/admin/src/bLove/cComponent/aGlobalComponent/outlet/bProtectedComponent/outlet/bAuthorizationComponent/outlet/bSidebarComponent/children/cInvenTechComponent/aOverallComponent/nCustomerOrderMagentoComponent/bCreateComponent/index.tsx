@@ -74,7 +74,7 @@ const frameworks = [
   },
 ]
 
-type CustomerOrderMagnetoCreateComponentType = {
+type CustomerOrderMagentoCreateComponentType = {
   // ReduxCall: any
   // APICall: {
   //   createAPITrigger: any,
@@ -92,7 +92,7 @@ type CustomerOrderMagnetoCreateComponentType = {
   // }
 }
 
-const CustomerOrderMagnetoCreateComponent = (_props: CustomerOrderMagnetoCreateComponentType) => {
+const CustomerOrderMagentoCreateComponent = (_props: CustomerOrderMagentoCreateComponentType) => {
   // // Destructure Props
   // const { APICall, extras } = props;
 
@@ -524,4 +524,4 @@ const CustomerOrderMagnetoCreateComponent = (_props: CustomerOrderMagnetoCreateC
   )
 }  
 
-export default CustomerOrderMagnetoCreateComponent;
+export default CustomerOrderMagentoCreateComponent;

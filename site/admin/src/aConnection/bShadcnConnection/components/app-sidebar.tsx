@@ -2,21 +2,16 @@ import {
   Archive,
   AudioWaveform,
   BookOpen,
-  Bot,
   Building2,
   CalendarRange,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
   MonitorPlay,
-  PieChart,
   ScrollText,
   SquareAsterisk,
-  SquareTerminal,
   Store,
   TrendingUp,
-  Warehouse,
+  Warehouse
 } from "lucide-react"
 import * as React from "react"
 
@@ -35,7 +30,7 @@ import {
 } from "@/aConnection/bShadcnConnection/components/ui/sidebar"
 import fullRoute from "@/bLove/gRoute/bFullRoute"
 import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.png"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { cn } from "../lib/utils"
 
 
@@ -64,28 +59,26 @@ const data = {
     },
   ],
 
-  forDashboard: [
+  forDashboard: (pathname: string) => [
     {
       title: "Dashboards",
       url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.zDashboardRoute.aDashboardRoute,
       icon: BookOpen,
       isActive: false,
-      items: [
-        {
-          title: "Inventech Dashboard",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.zDashboardRoute.aDashboardRoute,
-        },
-      ],
+      isCollapsible: false,
+      isHighlighted: pathname === fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.zDashboardRoute.aDashboardRoute,
+      items: [],
     },
   ],
 
-  forInvenTech: [
+  forInvenTech: (pathname: string) => [
     {
       title: "Product Catalogue",
       url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.aProductCatalogueRoute.aListRoute,
       icon: SquareAsterisk,
       isActive: false,
       isCollapsible: false,
+      isHighlighted: pathname.startsWith("/product-catalogue"),
       items: [],
     },
     {
@@ -94,18 +87,22 @@ const data = {
       icon: Archive,
       isActive: false,
       isCollapsible: true,
+      isHighlighted: pathname.startsWith("/inventory"),
       items: [
         {
           title: "General",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.kInventoryGeneralRoute.aListRoute,
+          isBlue: pathname.startsWith("/inventory-general-list")
         },
         {
           title: "Inward",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.lInventoryInwardRoute.aListRoute,
+          isBlue: pathname.startsWith("/inventory-inward-list") || pathname.startsWith("/inventory-inward-retrieve")
         },
         {
           title: "Outward",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.mInventoryOutwardRoute.aListRoute,
+          isBlue: pathname.startsWith("/inventory-outward-list") || pathname.startsWith("/inventory-outward-retrieve")
         },
       ],
     },
@@ -123,14 +120,17 @@ const data = {
       icon: MonitorPlay,
       isActive: false,
       isCollapsible: true,
+      isHighlighted: pathname.startsWith("/customer-order"),
       items: [
         {
-          title: "Received from Magneto",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.nCustomerOrderMagnetoRoute.aListRoute,
+          title: "Received from Magento",
+          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.nCustomerOrderMagentoRoute.aListRoute,
+          isBlue: pathname.startsWith("/customer-order-magento-")
         },
         {
           title: "Pushed to Shopify",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.oCustomerOrderShopifyRoute.aListRoute,
+          isBlue: pathname.startsWith("/customer-order-shopify-")
         },
       ],
     },
@@ -140,14 +140,17 @@ const data = {
       icon: CalendarRange,
       isActive: false,
       isCollapsible: true,
+      isHighlighted: pathname.startsWith("/open-purchase-order-") || pathname.startsWith("/closed-purchase-order-"),
       items: [
         {
           title: "Open",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.gOpenPurchaseOrderRoute.aListRoute,
+          isBlue: pathname.startsWith("/open-purchase-order-")
         },
         {
           title: "Closed",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.jClosedPurchaseOrderRoute.aListRoute,
+          isBlue: pathname.startsWith("/closed-purchase-order-")
         },
       ],
     },
@@ -157,6 +160,7 @@ const data = {
       icon: Warehouse,
       isActive: false,
       isCollapsible: false,
+      isHighlighted: pathname.startsWith("/warehouse-management-"),
       items: [],
     },
     {
@@ -165,6 +169,7 @@ const data = {
       icon: Store,
       isActive: false,
       isCollapsible: false,
+      isHighlighted: pathname.startsWith("/store-management-"),
       items: [],
     },
     {
@@ -173,22 +178,27 @@ const data = {
       icon: Building2,
       isActive: false,
       isCollapsible: true,
+      isHighlighted: pathname.startsWith("/location-") || pathname.startsWith("/department-") || pathname.startsWith("/employee-") || pathname.startsWith("/organization-role-"),
       items: [
         {
           title: "Location",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.eLocationRoute.aListRoute,
+          isBlue: pathname.startsWith("/location-")
         },
         {
           title: "Departments",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.fDepartmentRoute.aListRoute,
+          isBlue: pathname.startsWith("/department-")
         },
         {
           title: "Employees",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.iEmployeeRoute.aListRoute,
+          isBlue: pathname.startsWith("/employee-")
         },
         {
           title: "Role",
           url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.cInvenTechRoute.aOverallRoute.hOrganizationRoleRoute.aListRoute,
+          isBlue: pathname.startsWith("/organization-role-")
         },
       ],
     },
@@ -198,168 +208,172 @@ const data = {
       icon: ScrollText,
       isActive: false,
       isCollapsible: false,
+      isHighlighted: pathname.startsWith("/activity-log-"),
       items: [],
     },
   ],
 
-  forAdministration: [
-    {
-      title: "User Administration",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "User",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.aListRoute,
-        },
-        {
-          title: "Role",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.aListRoute,
-        },
-        {
-          title: "Menu",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.aListRoute,
-        },
-      ],
-    },
-    // {
-    //   title: "Playground",
-    //   url: "#",
-    //   icon: SquareTerminal,
-    //   items: [
-    //     {
-    //       title: "History",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Starred",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Settings",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Models",
-    //   url: "#",
-    //   icon: Bot,
-    //   items: [
-    //     {
-    //       title: "Genesis",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Explorer",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Quantum",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Documentation",
-    //   url: "#",
-    //   icon: BookOpen,
-    //   items: [
-    //     {
-    //       title: "Introduction",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Get Started",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Tutorials",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Changelog",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-    // {
-    //   title: "Settings",
-    //   url: "#",
-    //   icon: Settings2,
-    //   items: [
-    //     {
-    //       title: "General",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Team",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Billing",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Limits",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-  ],
+  // forAdministration: [
+  //   {
+  //     title: "User Administration",
+  //     url: "#",
+  //     icon: Bot,
+  //     items: [
+  //       {
+  //         title: "User",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.aUserRoute.aListRoute,
+  //       },
+  //       {
+  //         title: "Role",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.bRoleRoute.aListRoute,
+  //       },
+  //       {
+  //         title: "Menu",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.bUserAdministrationRoute.cMenuRoute.aListRoute,
+  //       },
+  //     ],
+  //   },
+  //   // {
+  //   //   title: "Playground",
+  //   //   url: "#",
+  //   //   icon: SquareTerminal,
+  //   //   items: [
+  //   //     {
+  //   //       title: "History",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Starred",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Settings",
+  //   //       url: "#",
+  //   //     },
+  //   //   ],
+  //   // },
+  //   // {
+  //   //   title: "Models",
+  //   //   url: "#",
+  //   //   icon: Bot,
+  //   //   items: [
+  //   //     {
+  //   //       title: "Genesis",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Explorer",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Quantum",
+  //   //       url: "#",
+  //   //     },
+  //   //   ],
+  //   // },
+  //   // {
+  //   //   title: "Documentation",
+  //   //   url: "#",
+  //   //   icon: BookOpen,
+  //   //   items: [
+  //   //     {
+  //   //       title: "Introduction",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Get Started",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Tutorials",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Changelog",
+  //   //       url: "#",
+  //   //     },
+  //   //   ],
+  //   // },
+  //   // {
+  //   //   title: "Settings",
+  //   //   url: "#",
+  //   //   icon: Settings2,
+  //   //   items: [
+  //   //     {
+  //   //       title: "General",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Team",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Billing",
+  //   //       url: "#",
+  //   //     },
+  //   //     {
+  //   //       title: "Limits",
+  //   //       url: "#",
+  //   //     },
+  //   //   ],
+  //   // },
+  // ],
 
-  forDeveloper: [
-    {
-      title: "Base Setup",
-      url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
-      icon: SquareTerminal,
-      isActive: false,
-      items: [
-        {
-          title: "Base Many To One",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.aListRoute,
-        },
-        {
-          title: "Base Many To Many",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.aListRoute,
-        },
-        {
-          title: "Base",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
-        },
-        {
-          title: "Base One To One",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.aListRoute,
-        },
-        {
-          title: "Base One To Many",
-          url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.aListRoute,
-        },
-      ],
-    },
-  ],
+  // forDeveloper: [
+  //   {
+  //     title: "Base Setup",
+  //     url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
+  //     icon: SquareTerminal,
+  //     isActive: false,
+  //     items: [
+  //       {
+  //         title: "Base Many To One",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.aBaseManyToOneRoute.aListRoute,
+  //       },
+  //       {
+  //         title: "Base Many To Many",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.bBaseManyToManyRoute.aListRoute,
+  //       },
+  //       {
+  //         title: "Base",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.cBaseRoute.aListRoute,
+  //       },
+  //       {
+  //         title: "Base One To One",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.dBaseOneToOneRoute.aListRoute,
+  //       },
+  //       {
+  //         title: "Base One To Many",
+  //         url: fullRoute.aGlobalRoute.bProtectedRoute.bAuthorizationRoute.bSidebarRoute.aBaseSetupRoute.eBaseOneToManyRoute.aListRoute,
+  //       },
+  //     ],
+  //   },
+  // ],
 
 
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
+  // projects: [
+  //   {
+  //     name: "Design Engineering",
+  //     url: "#",
+  //     icon: Frame,
+  //   },
+  //   {
+  //     name: "Sales & Marketing",
+  //     url: "#",
+  //     icon: PieChart,
+  //   },
+  //   {
+  //     name: "Travel",
+  //     url: "#",
+  //     icon: Map,
+  //   },
+  // ],
 }
 
 export function AppSidebar({ ReduxCall, APICall, navigate, ...props }: (React.ComponentProps<typeof Sidebar> & { ReduxCall?: any,APICall?: any, navigate?: any })) {
+  // Variable
+  const { pathname } = useLocation();
+
   // JSX
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -398,11 +412,8 @@ export function AppSidebar({ ReduxCall, APICall, navigate, ...props }: (React.Co
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain header="For Dashboard" items={data.forDashboard} />
-        <NavMain header="For Inventech" items={data.forInvenTech} />
-        {/* <NavMain header="For Administration" items={data.forAdministration} /> */}
-        {/* <NavMain header="For Developer" items={data.forDeveloper} /> */}
-        {/* <NavProjects projects={data.projects} /> */}
+        <NavMain header="For Dashboard" items={data.forDashboard(pathname)} />
+        <NavMain header="For Inventech" items={data.forInvenTech(pathname)} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} ReduxCall={ReduxCall} APICall={APICall} navigate={navigate} />

@@ -118,7 +118,7 @@ export const listColumn: ColumnDef<List>[] = [
       return (
         <div className="flex space-x-2">
           {label && <Badge variant="outline">{label.label}</Badge>}
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("aTitle")}
           </span>
         </div>
@@ -133,7 +133,7 @@ export const listColumn: ColumnDef<List>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("aSubtitle")}
           </span>
         </div>

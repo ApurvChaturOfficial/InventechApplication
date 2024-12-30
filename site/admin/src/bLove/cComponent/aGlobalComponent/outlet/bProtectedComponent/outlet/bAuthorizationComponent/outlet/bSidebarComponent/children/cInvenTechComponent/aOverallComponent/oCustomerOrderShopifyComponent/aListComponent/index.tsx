@@ -21,7 +21,7 @@ const CustomerOrderShopifyListComponent = () => {
       <div className="h-full flex-1 flex-col space-y-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Pushed to Magneto</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Pushed to Magento</h2>
             {/* <p className="text-muted-foreground">
               Sample List Details
             </p> */}
@@ -29,7 +29,7 @@ const CustomerOrderShopifyListComponent = () => {
           <div className="flex items-center space-x-2">
             <div className="flex flex-col text-right" >
               <p className="text-xs text-muted-foreground" >Last Sync on Sept 20, 2024 at 4:30 PM.</p>
-              <p className="text-xs text-green-500" >Auto Sync is ON. Syncing from Magneto.</p>
+              <p className="text-xs text-green-500" >Auto Sync is ON. Syncing from Magento.</p>
             </div>
             <Dialog>
               <DialogTrigger asChild>

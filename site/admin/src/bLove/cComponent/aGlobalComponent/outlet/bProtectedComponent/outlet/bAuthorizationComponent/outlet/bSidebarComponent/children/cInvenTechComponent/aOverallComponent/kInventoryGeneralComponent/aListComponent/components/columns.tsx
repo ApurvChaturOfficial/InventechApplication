@@ -39,7 +39,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("id")}
           </span>
         </div>
@@ -54,7 +54,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[250px] truncate font-medium">
+          <span className="max-w-[250px] truncate">
             <Link to={`/inventory-general-retrieve/_id`} className="hover:underline" >
               {row.getValue("name")}
             </Link>
@@ -71,7 +71,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("quantity")}
           </span>
         </div>
@@ -86,7 +86,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("warehouse")}
           </span>
         </div>
@@ -101,7 +101,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("barcode")}
           </span>
         </div>
@@ -116,7 +116,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("averagePurchase")}
           </span>
         </div>
@@ -131,7 +131,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("averageCost")}
           </span>
         </div>
@@ -146,7 +146,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("alert") === "up" ? (
               <ThumbsUp className="w-6 h-6 text-green-500"  />
             ) : (

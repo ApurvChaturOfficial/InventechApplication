@@ -399,7 +399,7 @@ const SettingComponent = () => {
                               <TableCell className="font-medium">Product Sync</TableCell>
                               <TableCell className="font-medium">Inward</TableCell>
                               <TableCell className="font-medium">From</TableCell>
-                              <TableCell className="font-medium">Magneto</TableCell>
+                              <TableCell className="font-medium">Magento</TableCell>
                               <TableCell className="font-medium">1 hr</TableCell>
                               <TableCell className="font-medium">
                                 <Button size="sm" variant="blue" >Request Change</Button>
@@ -439,7 +439,7 @@ const SettingComponent = () => {
                               <TableCell className="font-medium">Inventory Push</TableCell>
                               <TableCell className="font-medium">Outward</TableCell>
                               <TableCell className="font-medium">To</TableCell>
-                              <TableCell className="font-medium">Magneto</TableCell>
+                              <TableCell className="font-medium">Magento</TableCell>
                               <TableCell className="font-medium">1 hr</TableCell>
                               <TableCell className="font-medium">
                                 <Button size="sm" variant="blue" >Request Change</Button>

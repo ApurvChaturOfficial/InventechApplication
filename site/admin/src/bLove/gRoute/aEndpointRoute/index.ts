@@ -145,7 +145,7 @@ const endpointRoute = {
                 bCreateRoute: "inventory-outward-create",
                 cRetrieveRoute: "inventory-outward-retrieve",
               },
-              nCustomerOrderMagnetoRoute: {
+              nCustomerOrderMagentoRoute: {
                 aListRoute: "customer-order-magento-list",
                 bCreateRoute: "customer-order-magento-create",
                 cRetrieveRoute: "customer-order-magento-retrieve",

@@ -38,7 +38,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             <Link to={`/customer-order-magento-retrieve/_id`} className="hover:underline" >
               {row.getValue("id")}
             </Link>
@@ -55,7 +55,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[250px] truncate font-medium">
+          <span className="max-w-[250px] truncate">
             {row.getValue("purchaseDate")}
           </span>
         </div>
@@ -70,7 +70,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("billingName")}
           </span>
         </div>
@@ -85,7 +85,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("shippingName")}
           </span>
         </div>
@@ -100,7 +100,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("orderCost")}
           </span>
         </div>
@@ -115,7 +115,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("email")}
           </span>
         </div>
@@ -130,7 +130,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[450px] truncate font-medium">
+          <span className="max-w-[450px] truncate">
             {row.getValue("name")}
           </span>
         </div>
@@ -141,7 +141,7 @@ export const columns: ColumnDef<Task>[] = [
     id: "actions",
     cell: ({ row }) => (
       <DataTableRowActions 
-        row={row} route="customer-order-magneto" />
+        row={row} route="customer-order-Magento" />
     ),
   },
 ]

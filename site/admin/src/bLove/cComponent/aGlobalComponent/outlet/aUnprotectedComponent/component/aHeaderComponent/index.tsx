@@ -1,15 +1,28 @@
+import { RootState } from "@/aConnection/dReduxConnection"
+import globalSlice from "@/bLove/bRedux/aGlobalSlice"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
-import globalSlice from "@/bLove/bRedux/aGlobalSlice"
-import { RootState } from "@/aConnection/dReduxConnection"
 import { Link, useNavigate } from "react-router-dom"
 
+import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints"
 import getInitialsUtility from "@/bLove/dUtility/aGetInitialsUtility"
 import fullRoute from "@/bLove/gRoute/bFullRoute"
-import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.png";
-import userAPIEndpoint from "@/bLove/aAPI/bUserAdministrationAPI/aUserAPIEndpoints"
+import BrandLogo from "@/bLove/hAsset/BrandLogo/BrandLogo.png"
 import apiResponseHandler from "./extras/aAPIResponseHandler"
 
+import { ModeToggle } from "@/aConnection/bShadcnConnection/components/mode-toggle"
+import { Avatar, AvatarFallback, AvatarImage } from "@/aConnection/bShadcnConnection/components/ui/avatar"
+import { Button } from "@/aConnection/bShadcnConnection/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/aConnection/bShadcnConnection/components/ui/dropdown-menu"
+import { Sheet, SheetContent, SheetTrigger } from "@/aConnection/bShadcnConnection/components/ui/sheet"
+import { cn } from "@/aConnection/bShadcnConnection/lib/utils"
+import brandConnection from "@/aConnection/eBrandConnection"
+import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu"
 import {
   BookmarkX,
   FolderKey,
@@ -19,22 +32,8 @@ import {
   Menu,
   Rat,
   User2,
-  UserPen,
-  UserPlus,
+  UserPen
 } from "lucide-react"
-import { Button } from "@/aConnection/bShadcnConnection/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/aConnection/bShadcnConnection/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/aConnection/bShadcnConnection/components/ui/sheet"
-import { ModeToggle } from "@/aConnection/bShadcnConnection/components/mode-toggle"
-import { cn } from "@/aConnection/bShadcnConnection/lib/utils"
-import { Avatar, AvatarFallback, AvatarImage } from "@/aConnection/bShadcnConnection/components/ui/avatar"
-import brandConnection from "@/aConnection/eBrandConnection"
-import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu"
 
 
 const HeaderComponent = () => {
@@ -259,11 +258,11 @@ const HeaderComponent = () => {
                             <LogIn /> Sign In
                           </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem asChild >
+                        {/* <DropdownMenuItem asChild >
                           <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.bSignUpRoute} >
                             <UserPlus /> Sign Up
                           </Link>
-                        </DropdownMenuItem>
+                        </DropdownMenuItem> */}
                         <DropdownMenuItem asChild >
                           <Link to={fullRoute.aGlobalRoute.bProtectedRoute.aAuthenticationRoute.cForgotPasswordRoute} >
                           <KeyRound /> Forgot Password

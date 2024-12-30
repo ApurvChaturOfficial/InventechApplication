@@ -29,9 +29,11 @@ export function NavMain({
     icon?: LucideIcon
     isActive?: boolean
     isCollapsible?: boolean
+    isHighlighted?: boolean
     items?: {
       title: string
       url: string
+      isBlue?: boolean
     }[]
   }[]
 }) {
@@ -52,7 +54,7 @@ export function NavMain({
                 item.isCollapsible ? (
                   <React.Fragment>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton tooltip={item.title}>
+                      <SidebarMenuButton tooltip={item.title} className={item.isHighlighted ? "bg-blue-100 hover:bg-blue-100/80 dark:bg-slate-800 dark:hover:bg-slate-800/80" : ""} >
                         {item.icon && <item.icon />}
                         <span>{item.title}</span>
                         <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -62,7 +64,7 @@ export function NavMain({
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton asChild>
+                            <SidebarMenuSubButton asChild className={subItem.isBlue ? "bg-blue-100 hover:bg-blue-100/80 dark:bg-slate-800 dark:hover:bg-slate-800/80" : ""} >
                               <Link to={subItem.url}>
                                 <span>{subItem.title}</span>
                               </Link>
@@ -74,7 +76,7 @@ export function NavMain({
                   </React.Fragment>
                 ) : (
                   <React.Fragment>
-                    <SidebarMenuButton asChild>
+                    <SidebarMenuButton asChild className={item.isHighlighted ? "bg-blue-100 hover:bg-blue-100/80 dark:bg-slate-800 dark:hover:bg-slate-800/80" : ""} >
                       <Link to={item.url}>
                         {item.icon && <item.icon />}
                         <span>{item.title}</span>

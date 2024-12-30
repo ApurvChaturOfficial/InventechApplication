@@ -41,7 +41,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[350px] truncate font-medium">
+          <span className="max-w-[350px] truncate">
             {row.getValue("skuID")}
           </span>
         </div>
@@ -56,7 +56,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[300px] truncate font-medium">
+          <span className="max-w-[300px] truncate">
             <Link to={`/product-catalogue-retrieve/_id`} className="hover:underline" >
               {row.getValue("name")}
             </Link>
@@ -73,7 +73,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[100px] truncate font-medium">
+          <span className="max-w-[100px] truncate">
             {row.getValue("type")}
           </span>
         </div>
@@ -88,7 +88,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       return (
         <div className="flex space-x-2">
-          <span className="max-w-[100px] truncate font-medium">
+          <span className="max-w-[100px] truncate">
             {row.getValue("priceAEDSupplier")}
           </span>
         </div>
