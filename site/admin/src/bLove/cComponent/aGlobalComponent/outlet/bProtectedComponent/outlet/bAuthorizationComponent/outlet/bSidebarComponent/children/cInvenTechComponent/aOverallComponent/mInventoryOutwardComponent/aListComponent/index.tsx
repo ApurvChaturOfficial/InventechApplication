@@ -70,10 +70,7 @@ const InventoryOutwardListComponent = () => {
           </div>
         </div>
 
-        <div className="w-[1100px]" >
-          <DataTable data={tasks} columns={columns as any} />
-
-        </div>
+        <DataTable data={tasks} columns={columns as any} />
       </div>
     </>
     </React.Fragment>
